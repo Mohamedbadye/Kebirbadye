@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badye | Strategic Digital Architect</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Typography & Base */
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; background-color: #f8fafc; }
+        h1, h2, h3, h4, .btn-font { font-family: 'Outfit', sans-serif; }
+        code, pre { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Advanced Gradients & Effects */
+        .hero-bg { 
+            background: radial-gradient(circle at top right, #1e1b4b 0%, #0f172a 40%, #020617 100%); 
+            position: relative;
+        }
+        .hero-bg::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.15);
+            border-color: #818cf8;
+        }
+
+        /* Project Cards (Index4 Style) */
+        .project-card { 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 1px solid #e2e8f0; 
+        }
+        .project-card:hover { 
+            transform: translateY(-8px) scale(1.01); 
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.2); 
+            border-color: #6366f1; 
+        }
+
+        /* Tab Animations */
+        .tab-content { display: none; opacity: 0; animation: fadeIn 0.5s forwards; }
+        .tab-content.active { display: grid; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Horizontal Tab Buttons */
+        .tab-btn.active { 
+            background-color: #4f46e5; color: white; border-color: #4f46e5; 
+            box-shadow: 0 4px 15px -3px rgba(79, 70, 229, 0.4); 
+        }
+
+        /* Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.3s ease;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px; 
+            padding-bottom: 1.5rem;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            color: #4f46e5;
+        }
+
+        /* Scrollbar & Utils */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Modal Transitions */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .modal-exit { opacity: 1; transform: scale(1); }
+        .modal-exit-active { opacity: 0; transform: scale(0.95); transition: all 0.2s ease-in; }
+    </style>
+</head>
+<body class="text-slate-800 relative selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navbar -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-slate-100 fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-black text-slate-900 tracking-tighter group">
+                Badye<span class="text-indigo-600 group-hover:text-indigo-500 transition-colors">.</span>Dev
+            </a>
+            
+            <div id="nav-menu" class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <a href="#value" class="hover:text-indigo-600 transition-colors" data-i18n="nav_value">My Value</a>
+                <a href="#skills" class="hover:text-indigo-600 transition-colors" data-i18n="nav_valu">my skills</a>
+                <a href="#offer" class="hover:text-indigo-600 transition-colors" data-i18n="nav_offer">Services</a>
+                <a href="#projects" class="hover:text-indigo-600 transition-colors" data-i18n="nav_projects">Selected Work</a>
+                <a href="#contact" class="bg-slate-900 text-white px-6 py-2.5 rounded-lg hover:bg-indigo-600 transition-all shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5" data-i18n="nav_contact">Hire Solution</a>
+                
+                <button id="lang-toggle" class="flex items-center space-x-2 border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50 transition group font-bold text-xs">
+                    <i class="fas fa-globe text-indigo-500"></i>
+                    <span id="current-lang">EN</span>
+                </button>
+            </div>
+
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-slate-700 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-xl absolute w-full">
+            <a href="#value" class="block py-4 px-6 font-semibold hover:bg-slate-50 border-b border-slate-50" data-i18n="nav_value">My Value</a>
+            <a href="#skills" class="block py-4 px-6 font-semibold hover:bg-slate-50 border-b border-slate-50" data-i18n="nav_valu">My skills</a>         
+            <a href="#offer" class="block py-4 px-6 font-semibold hover:bg-slate-50 border-b border-slate-50" data-i18n="nav_offer">Services</a>
+            <a href="#projects" class="block py-4 px-6 font-semibold hover:bg-slate-50 border-b border-slate-50" data-i18n="nav_projects">Selected Work</a>
+            <a href="#contact" class="block py-4 px-6 font-semibold bg-indigo-50 text-indigo-700" data-i18n="nav_contact">Hire Solution</a>
+            <div class="py-4 px-6">
+                <button id="mobile-lang-toggle" class="w-full border border-slate-200 py-2 rounded-lg font-bold text-sm">EN / FR</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg text-white pt-44 pb-32 relative overflow-hidden">
+            <!-- Abstract Glows -->
+            <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[100px] animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px]"></div>
+
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <div class="inline-block px-4 py-1.5 rounded-full border border-indigo-400/30 bg-indigo-500/10 text-indigo-300 text-xs font-bold uppercase tracking-widest mb-8 backdrop-blur-sm">
+                    <span data-i18n="hero_badge">Business-First Development</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tight">
+                    <span data-i18n="hero_h1_1">I Don't Just Write Code.</span><br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-white" data-i18n="hero_h1_2">I Engineer Growth.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto font-light" data-i18n="hero_desc">
+                    Businesses don't need more websites; they need <strong>systems that work</strong>. I transform complex operational problems into seamless, profitable digital platforms.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-5">
+                    <a href="#projects" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2 group">
+                        <span data-i18n="hero_cta_work">View Solutions</span>
+                        <i class="fa-solid fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 rounded-xl font-bold border border-slate-600 hover:border-white hover:bg-white/5 transition-all text-white flex items-center justify-center">
+                        <span data-i18n="hero_cta_talk">Discuss Your Problem</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value/Expertise Section -->
+        <section id="value" class="py-24 bg-white">
+            <div class="container mx-auto px-6 reveal">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-i18n="value_title">My Strategic Value</h2>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto" data-i18n="value_subtitle">Moving beyond syntax to deliver strategic business outcomes.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Value 1 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center mb-6 text-indigo-600 text-2xl border border-indigo-100">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900" data-i18n="val_1_title">Scalable Ecosystems</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm" data-i18n="val_1_desc">Building complex platforms (SaaS) where users, data, and logic interact seamlessly. Not just pages, but engines.</p>
+                    </div>
+                    <!-- Value 2 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center mb-6 text-purple-600 text-2xl border border-purple-100">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900" data-i18n="val_2_title">Conversion Focused</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm" data-i18n="val_2_desc">Landing pages designed with psychology in mind. Every pixel serves one purpose: turning visitors into customers.</p>
+                    </div>
+                    <!-- Value 3 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600 text-2xl border border-blue-100">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-slate-900" data-i18n="val_3_title">Performance & Logic</h3>
+                        <p class="text-slate-600 leading-relaxed text-sm" data-i18n="val_3_desc">Optimized algorithms and clean code ensure your application runs fast, securing SEO ranking and user retention.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services / FAQ -->
+        <section id="offer" class="py-24 bg-slate-50 border-y border-slate-200">
+            <div class="container mx-auto px-6 reveal">
+                <div class="flex flex-col lg:flex-row gap-16">
+                    <!-- Left Side: Pitch -->
+                    <div class="lg:w-1/3">
+                        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight" data-i18n="offer_title">What Exactly Do I Offer?</h2>
+                        <p class="text-slate-600 mb-8 text-lg" data-i18n="offer_desc">
+                            Transparent answers to your business questions. I bridge the gap between "I need a website" and "I need a revenue channel".
+                        </p>
+                        <a href="#contact" class="inline-flex items-center gap-2 font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
+                            <span data-i18n="offer_link">Start a Consultation</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Right Side: Accordion -->
+                    <div class="lg:w-2/3 space-y-4">
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item bg-white rounded-2xl border border-slate-200 overflow-hidden cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-6 flex justify-between items-center">
+                                <h3 class="font-bold text-lg text-slate-800" data-i18n="faq_1_q">Do you just write code?</h3>
+                                <i class="fas fa-chevron-down accordion-icon text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content px-6 text-slate-600">
+                                <p data-i18n="faq_1_a">No. I build business solutions. I start by understanding your operational bottleneck or sales goal, then I engineer the digital tool that solves it.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item bg-white rounded-2xl border border-slate-200 overflow-hidden cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-6 flex justify-between items-center">
+                                <h3 class="font-bold text-lg text-slate-800" data-i18n="faq_2_q">What tech stack do you use?</h3>
+                                <i class="fas fa-chevron-down accordion-icon text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content px-6 text-slate-600">
+                                <p data-i18n="faq_2_a">I specialize in the Modern Stack: React.js, Tailwind CSS, and Node.js. This ensures your project is fast, scalable, and easy to maintain in the future.</p>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item bg-white rounded-2xl border border-slate-200 overflow-hidden cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-6 flex justify-between items-center">
+                                <h3 class="font-bold text-lg text-slate-800" data-i18n="faq_3_q">Can I see the code before buying?</h3>
+                                <i class="fas fa-chevron-down accordion-icon text-slate-400 transition-transform duration-300"></i>
+                            </div>
+                            <div class="accordion-content px-6 text-slate-600">
+                                <p data-i18n="faq_3_a">Yes! I provide "Code Previews" for my projects. You can see snippets of the logic structure to ensure quality before we proceed with full development or purchase.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <!-- Technical Arsenal Section -->
+        <section id="skills" class="py-24 bg-slate-900 relative overflow-hidden">
+            <!-- Background Decorations -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+            
+            <div class="container mx-auto px-6 reveal relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4" data-i18n="skills_title">Technical Arsenal</h2>
+                    <p class="text-slate-400 text-lg max-w-2xl mx-auto" data-i18n="skills_subtitle">Modern technologies engineered to deliver speed, intelligence, and scalability.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Skill 1: Responsive & UI -->
+                    <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-all hover:-translate-y-2 group">
+                        <div class="text-indigo-400 text-4xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-laptop-mobile"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white" data-i18n="sk_1_title">Fluid Modern UI/UX</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="sk_1_desc">Pixel-perfect, ultra-modern interfaces that adapt flawlessly to any screen size, ensuring premium user experiences everywhere.</p>
+                    </div>
+
+                    <!-- Skill 2: AI & API & Azure -->
+                    <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-all hover:-translate-y-2 group">
+                        <div class="text-purple-400 text-4xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white" data-i18n="sk_2_title">AI & API Integration</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="sk_2_desc">Empowering apps with smart AI prompts, deep API integrations, and robust cloud solutions powered by Azure.</p>
+                    </div>
+
+                    <!-- Skill 3: DB, Realtime, Supabase/Firebase -->
+                    <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-all hover:-translate-y-2 group">
+                        <div class="text-emerald-400 text-4xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white" data-i18n="sk_3_title">Real-Time Data</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="sk_3_desc">Secure authentication and lightning-fast live data synchronization using Supabase and Firebase ecosystems.</p>
+                    </div>
+
+                    <!-- Skill 4: Serverless & Deployment -->
+                    <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-all hover:-translate-y-2 group">
+                        <div class="text-sky-400 text-4xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-white" data-i18n="sk_4_title">Serverless Architecture</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n="sk_4_desc">Seamless deployment and scalable backend logic utilizing Vercel, Netlify, and high-performance serverless functions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+
+        <!-- MAIN PROJECTS SECTION (Horizontal Tabs - Fixed) -->
+        <section id="projects" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4" data-i18n="projects_title">Proven Solutions</h2>
+                    <p class="text-slate-500 text-lg max-w-2xl mx-auto" data-i18n="projects_subtitle">Real-world applications categorized by strategic impact.</p>
+                </div>
+
+               <!-- Horizontal Tabs (Modified for Mobile) -->
+<div class="flex flex-nowrap overflow-x-auto md:justify-center gap-3 mb-12 pb-2 px-2 no-scrollbar">
+    
+    <!-- زر 1 -->
+    <button class="tab-btn active flex-shrink-0 whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2" onclick="openTab(event, 'platforms-tab')">
+        <i class="fa-solid fa-network-wired"></i> <span data-i18n="tab_platforms">SaaS & Ecosystems</span>
+    </button>
+    
+    <!-- زر 2 -->
+    <button class="tab-btn flex-shrink-0 whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2" onclick="openTab(event, 'growth-tab')">
+        <i class="fa-solid fa-rocket"></i> <span data-i18n="tab_growth">Growth & Landing</span>
+    </button>
+    
+    <!-- زر 3 -->
+    <button class="tab-btn flex-shrink-0 whitespace-nowrap px-4 py-2 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2" onclick="openTab(event, 'tools-tab')">
+        <i class="fa-solid fa-microchip"></i> <span data-i18n="tab_tools">Interactive Tools</span>
+    </button>
+
+</div>
+
+                <!-- Tab 1: SaaS & Platforms -->
+                <div id="platforms-tab" class="tab-content active grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Hirafiyin -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="absolute top-4 right-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm z-10">Marketplace</div>
+                        <div class="h-60 overflow-hidden relative bg-orange-50">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">Hirafiyin Platform</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Connecting skilled artisans with clients. Handles user profiles, booking logic, and filtering.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://Hirafiyin.netlify.app/" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('hirafiyin')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecrii -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="absolute top-4 right-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm z-10">SaaS</div>
+                        <div class="h-60 overflow-hidden relative bg-slate-800">
+                            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">Ecrii Editor</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">A distraction-free SaaS tool for writers. Features local storage persistence and minimalist UI.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://ecrii.netlify.app" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('ecrii')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medcinexo V5 -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="absolute top-4 right-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm z-10">Dashboard</div>
+                        <div class="h-60 overflow-hidden relative">
+                            <img src="https://images.pexels.com/photos/7579827/pexels-photo-7579827.jpeg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">Medcinexo Hospital V5</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Full-scale hospital administration dashboard visualizing patient data and staff allocation.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://medcinexo05.netlify.app/" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('med5')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Medcinexo V6 -->
+                     <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="absolute top-4 right-4 bg-black/70 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm z-10">Inventory</div>
+                        <div class="h-60 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">Medcinexo Pharm V6</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Pharmacy inventory management system to track stock levels, expiration dates, and sales.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://medcinexo06.netlify.app/" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('med6')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Growth & Landing Pages -->
+                <div id="growth-tab" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- PagShop -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative border-2 border-indigo-100">
+                        <div class="absolute top-4 right-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">Featured</div>
+                        <div class="h-60 overflow-hidden relative bg-slate-100">
+                            <img src="https://images.unsplash.com/photo-1472851294608-415105022052?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">PagShop E-Commerce</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">High-converting product landing page designed to maximize sales with trust signals.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://pagshop.netlify.app/" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('pagshop')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagland 1 -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="h-60 overflow-hidden relative bg-indigo-50">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">Social Bio Link V1</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">A sleek, mobile-first landing page for creators to centralize their social presence.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://pagland.netlify.app/" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('pag1')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagland 2 -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="h-60 overflow-hidden relative bg-purple-50">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">Agency Bio Link V2</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">Alternative layout for agencies featuring QR codes and quick contact access.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://pagland1.netlify.app" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('pag2')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Oftaloo -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="h-60 overflow-hidden relative">
+                           <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                       </div>
+                       <div class="p-8 flex-grow flex flex-col">
+                           <h3 class="text-xl font-bold mb-2 text-slate-900">Oftaloo Clinic</h3>
+                           <p class="text-slate-500 text-sm mb-6 flex-grow">Lead generation website for an ophthalmology clinic, focused on appointment scheduling.</p>
+                           <div class="flex gap-3 mt-auto">
+                               <a href="https://mohamedbadye.github.io/Oftaloo/" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                               <button onclick="openModal('ophtal')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+
+                <!-- Tab 3: Tools & Logic -->
+                <div id="tools-tab" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Weather -->
+                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="h-60 overflow-hidden relative bg-gradient-to-br from-blue-400 to-cyan-300 flex items-center justify-center">
+                           <i class="fas fa-cloud-sun-rain text-6xl text-white opacity-90 group-hover:scale-110 transition-transform"></i>
+                       </div>
+                       <div class="p-8 flex-grow flex flex-col">
+                           <h3 class="text-xl font-bold mb-2 text-slate-900">SkyCast Engine</h3>
+                           <p class="text-slate-500 text-sm mb-6 flex-grow">Real-time data visualization connecting to weather APIs. Asynchronous requests.</p>
+                           <div class="flex gap-3 mt-auto">
+                               <a href="https://wethar.netlify.app" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                               <button onclick="openModal('weather')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                           </div>
+                       </div>
+                   </div>
+
+                   <!-- Random Picker -->
+                   <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group relative">
+                        <div class="h-60 overflow-hidden relative bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-dice text-6xl text-white opacity-90 group-hover:rotate-12 transition-transform"></i>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold mb-2 text-slate-900">Logic Picker</h3>
+                            <p class="text-slate-500 text-sm mb-6 flex-grow">A JavaScript-heavy utility for randomized decision making. Demonstrates array manipulation.</p>
+                            <div class="flex gap-3 mt-auto">
+                                <a href="https://prorandompicker.netlify.app" target="_blank" class="flex-1 bg-indigo-600 text-white text-center py-2.5 rounded-lg text-sm font-bold hover:bg-indigo-700 transition" data-i18n="btn_demo">Live Demo</a>
+                                <button onclick="openModal('picker')" class="flex-1 border border-slate-300 text-slate-700 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-50 transition flex justify-center items-center gap-2"><i class="fas fa-code"></i> Code</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OTHER PROJECTS SECTION (At Bottom) -->
+        <section id="other-projects" class="py-24 bg-slate-50 border-t border-slate-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mb-4" data-i18n="other_title">Other Technical Explorations</h2>
+                    <p class="text-slate-500 text-sm max-w-2xl mx-auto" data-i18n="other_subtitle">Previous iterations, experimental layouts, and specific industry templates.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Medcinexo V1 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition">
+                        <div class="p-5">
+                            <h4 class="font-bold text-slate-800 mb-1">Medcinexo Pro V1</h4>
+                            <p class="text-xs text-slate-500 mb-4">Initial healthcare interface concept.</p>
+                            <div class="flex gap-2">
+                                <a href="https://medcinexo01.netlify.app/" target="_blank" class="text-indigo-600 text-xs font-bold hover:underline">Demo</a>
+                                <button onclick="openModal('med1')" class="text-slate-400 text-xs font-bold hover:text-slate-600">Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medcinexo V2 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition">
+                        <div class="p-5">
+                            <h4 class="font-bold text-slate-800 mb-1">Medcinexo Clinic V2</h4>
+                            <p class="text-xs text-slate-500 mb-4">Advanced booking system logic.</p>
+                            <div class="flex gap-2">
+                                <a href="https://medcinexo02.netlify.app/" target="_blank" class="text-indigo-600 text-xs font-bold hover:underline">Demo</a>
+                                <button onclick="openModal('med2')" class="text-slate-400 text-xs font-bold hover:text-slate-600">Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medcinexo V3 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition">
+                        <div class="p-5">
+                            <h4 class="font-bold text-slate-800 mb-1">Medcinexo Care V3</h4>
+                            <p class="text-xs text-slate-500 mb-4">Patient portal with clean UI.</p>
+                            <div class="flex gap-2">
+                                <a href="https://medcinexo03.netlify.app/" target="_blank" class="text-indigo-600 text-xs font-bold hover:underline">Demo</a>
+                                <button onclick="openModal('med3')" class="text-slate-400 text-xs font-bold hover:text-slate-600">Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medcinexo V4 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition">
+                        <div class="p-5">
+                            <h4 class="font-bold text-slate-800 mb-1">Medcinexo Dental V4</h4>
+                            <p class="text-xs text-slate-500 mb-4">Specialized template for dental care.</p>
+                            <div class="flex gap-2">
+                                <a href="https://medcinexo04.netlify.app/" target="_blank" class="text-indigo-600 text-xs font-bold hover:underline">Demo</a>
+                                <button onclick="openModal('med4')" class="text-slate-400 text-xs font-bold hover:text-slate-600">Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medcinexo V7 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition">
+                        <div class="p-5">
+                            <h4 class="font-bold text-slate-800 mb-1">Medcinexo Labs V7</h4>
+                            <p class="text-xs text-slate-500 mb-4">Laboratory results and testing schedule.</p>
+                            <div class="flex gap-2">
+                                <a href="https://medcinexo07.netlify.app/" target="_blank" class="text-indigo-600 text-xs font-bold hover:underline">Demo</a>
+                                <button onclick="openModal('med7')" class="text-slate-400 text-xs font-bold hover:text-slate-600">Code</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio V13 -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition">
+                        <div class="p-5">
+                            <h4 class="font-bold text-slate-800 mb-1">Portfolio Design V13</h4>
+                            <p class="text-xs text-slate-500 mb-4">Experimental CSS animations layout.</p>
+                            <div class="flex gap-2">
+                                <a href="https://portfo13.netlify.app/" target="_blank" class="text-indigo-600 text-xs font-bold hover:underline">Demo</a>
+                                <button onclick="openModal('portfolio')" class="text-slate-400 text-xs font-bold hover:text-slate-600">Code</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-slate-900 relative overflow-hidden">
+             <!-- Background Decorations -->
+             <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-600 rounded-bl-full opacity-10"></div>
+             <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-600 rounded-tr-full opacity-10"></div>
+
+            <div class="container mx-auto px-6 reveal relative z-10">
+                <div class="max-w-3xl mx-auto text-center mb-12">
+                    <h2 class="text-4xl font-bold text-white mb-6" data-i18n="contact_title">Have a Problem to Solve?</h2>
+                    <p class="text-lg text-slate-400" data-i18n="contact_subtitle">You don't need code; you need a solution. Let's discuss how we can build a system that achieves your goals.</p>
+                </div>
+                
+                <div class="max-w-xl mx-auto">
+                    <form id="contactForm" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" id="name" class="w-full px-5 py-4 border border-slate-700 bg-slate-800 text-white rounded-lg focus:outline-none focus:border-indigo-500 transition-all placeholder-slate-500" placeholder="Your Name">
+                            <input type="email" id="email" class="w-full px-5 py-4 border border-slate-700 bg-slate-800 text-white rounded-lg focus:outline-none focus:border-indigo-500 transition-all placeholder-slate-500" placeholder="Email">
+                        </div>
+                        <textarea id="message" rows="4" class="w-full px-5 py-4 border border-slate-700 bg-slate-800 text-white rounded-lg focus:outline-none focus:border-indigo-500 transition-all placeholder-slate-500" placeholder="Describe the challenge you are facing..."></textarea>
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-indigo-500 transition-all shadow-lg hover:scale-[1.02]">
+                            <span data-i18n="form_submit">Start the Conversation</span>
+                        </button>
+                        <p id="formMessage" class="mt-4 text-center font-bold text-white"></p> 
+                    </form>
+                    
+                    <div class="mt-10 flex justify-center gap-6">
+                        <a href="https://x.com/BadyeKebir75490" class="text-slate-500 hover:text-white transition-colors text-2xl"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/badye-kebir-44bb45219" class="text-slate-500 hover:text-white transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Mohamedbadye" class="text-slate-500 hover:text-white transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CODE PREVIEW MODAL -->
+    <div id="code-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="flex min-h-full items-center justify-center p-4">
+            <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all w-full max-w-2xl border border-slate-200">
+                <div class="bg-slate-50 px-6 py-4 flex justify-between items-center border-b border-slate-100">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-code text-indigo-600"></i> <span id="modal-project-name">Project Name</span>
+                    </h3>
+                    <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+                </div>
+                <div class="px-6 py-6 bg-[#1e1e1e]">
+                    <pre class="overflow-x-auto text-sm text-green-400 font-mono rounded-lg"><code id="modal-code-content">// Loading code snippet...</code></pre>
+                    <p class="text-slate-500 text-xs mt-4 text-center" data-i18n="modal_blur">... Full source code hidden for protection ...</p>
+                </div>
+                <div class="bg-slate-50 px-6 py-4 flex justify-between items-center border-t border-slate-100">
+                    <button onclick="buyCode()" class="bg-indigo-600 text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-indigo-700 transition" data-i18n="modal_buy">Ask to Buy Source Code</button>
+                    <button onclick="closeModal()" class="text-slate-500 font-bold text-sm hover:text-slate-800" data-i18n="modal_close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-10 border-t border-slate-900 text-sm">
+        <div class="container mx-auto px-6 text-center">
+            <p data-i18n="footer_rights">© 2025 Badye Kebir. Strategic Web Development.</p>
+        </div>
+    </footer>
+    
+    <!-- Floating Buttons -->
+    <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
+        <!-- Back to Top -->
+        <button id="back-to-top" class="bg-indigo-600 text-white w-12 h-12 rounded-full shadow-xl hover:bg-indigo-700 transition-all duration-300 opacity-0 translate-y-10 flex items-center justify-center">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/213775792838" target="_blank" class="bg-[#25D366] text-white w-12 h-12 rounded-full shadow-xl hover:scale-110 transition-transform flex items-center justify-center">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("uo0yj8oJSrApxtJQS");
+
+        // --- Data: Code Snippets (Merged) ---
+        const projectData = {
+            // Main Projects
+            hirafiyin: { title: "Hirafiyin Platform", code: "const bookArtisan = async (id, date) => {\n  const availability = await checkCalendar(id, date);\n  if (availability) return processBooking();\n}" },
+            ecrii: { title: "Ecrii Editor", code: "localStorage.setItem('draft', content);\n// Auto-save logic triggers every 5 seconds\nsetInterval(saveToCloud, 5000);" },
+            med5: { title: "Hospital V5", code: "// Dashboard Stats Aggregation\nconst getStats = () => {\n  return db.patients.reduce((acc, curr) => {\n    acc.total += 1;\n    if(curr.status === 'critical') acc.critical += 1;\n    return acc;\n  }, {total:0, critical:0});\n}" },
+            med6: { title: "Pharmacy V6", code: "class Inventory {\n  checkExpiry(date) {\n    const today = new Date();\n    return date < today ? 'Expired' : 'Valid';\n  }\n}" },
+            pagshop: { title: "PagShop E-Com", code: "// Conversion Tracker\nconst trackView = () => analytics.send('view_item', { id: product.id });\nconst ctaClick = () => analytics.send('begin_checkout');" },
+            pag1: { title: "Social Bio Link V1", code: "<div className='link-tree'>\n  {links.map(link => <LinkButton key={link.id} {...link} />)}\n</div>" },
+            pag2: { title: "Agency Bio Link V2", code: "// QR Code Generation\nimport QRCode from 'qrcode';\nQRCode.toDataURL('https://agency.com', { errorCorrectionLevel: 'H' });" },
+            ophtal: { title: "Oftaloo Clinic", code: "// Appointment Form Validation\nif (!phoneRegex.test(phone)) {\n  setError('Invalid phone number');\n  return false;\n}" },
+            weather: { title: "SkyCast Engine", code: "async function fetchWeather(city) {\n  const res = await fetch(`${API_URL}?q=${city}`);\n  const data = await res.json();\n  updateUI(data);\n}" },
+            picker: { title: "Logic Picker", code: "const pickWinner = (arr) => {\n  const randomIndex = Math.floor(Math.random() * arr.length);\n  return arr[randomIndex];\n}" },
+            
+            // Other Projects
+            med1: { title: "Medcinexo Pro V1", code: "// React Component for Patient Dashboard\nconst Dashboard = () => { return <div className='grid'>...</div> }" },
+            med2: { title: "Medcinexo Clinic V2", code: "// Booking Logic\nfunction bookAppointment(date, doctorId) { return api.post('/book', { date, doctorId }); }" },
+            med3: { title: "Medcinexo Care V3", code: "/* CSS Variable for Medical Theme */\n:root { --primary-medical: #0ea5e9; --secondary: #38bdf8; }" },
+            med4: { title: "Medcinexo Dental V4", code: "// Dental Chart Logic\nconst teethArray = Array.from({length: 32}, (_, i) => ({id: i+1, status: 'healthy'}));" },
+            med7: { title: "Medcinexo Labs V7", code: "// Lab Result PDF Generation\nimport jsPDF from 'jspdf';\nconst generateReport = (results) => { ... }" },
+            portfolio: { title: "Modern Portfolio V13", code: "<div class='group relative overflow-hidden'> ... </div>" }
+        };
+
+        // --- Translations ---
+        // --- Translations ---
+        const translations = {
+            en: {
+                nav_value: "My Value", nav_valu: "My Skills", nav_offer: "Services", nav_projects: "Work", nav_contact: "Hire Solution",
+                hero_badge: "Business-First Development",
+                hero_h1_1: "I Don't Just Write Code.", hero_h1_2: "I Engineer Growth.",
+                hero_desc: "Businesses don't need more websites; they need systems that work. I transform complex operational problems into seamless, profitable digital platforms.",
+                hero_cta_work: "View Solutions", hero_cta_talk: "Discuss Your Problem",
+                
+                value_title: "My Strategic Value", value_subtitle: "Moving beyond syntax to deliver strategic business outcomes.",
+                val_1_title: "Scalable Ecosystems", val_1_desc: "Building complex platforms where users, data, and logic interact seamlessly.",
+                val_2_title: "Conversion Focused", val_2_desc: "Landing pages designed with psychology to turn visitors into paying customers.",
+                val_3_title: "Performance & Logic", val_3_desc: "Optimized algorithms ensure your application runs fast and ranks high.",
+
+                // --- NEW SKILLS SECTION EN ---
+                skills_title: "Technical Arsenal", 
+                skills_subtitle: "Modern technologies engineered to deliver speed, intelligence, and scalability.",
+                sk_1_title: "Fluid Modern UI/UX", sk_1_desc: "Pixel-perfect, ultra-modern interfaces that adapt flawlessly to any screen size, ensuring premium user experiences everywhere.",
+                sk_2_title: "AI & API Integration", sk_2_desc: "Empowering apps with smart AI prompts, deep API integrations, and robust cloud solutions powered by Azure.",
+                sk_3_title: "Real-Time Data", sk_3_desc: "Secure authentication and lightning-fast live data synchronization using Supabase and Firebase ecosystems.",
+                sk_4_title: "Serverless Architecture", sk_4_desc: "Seamless deployment and scalable backend logic utilizing Vercel, Netlify, and high-performance serverless functions.",
+
+                offer_title: "What Exactly Do I Offer?",
+                offer_desc: "Transparent answers to your business questions. I bridge the gap between 'I need a website' and 'I need a revenue channel'.",
+                offer_link: "Start a Consultation",
+                faq_1_q: "Do you just write code?", faq_1_a: "No. I build business solutions. I start by understanding your operational bottleneck or sales goal, then I engineer the digital tool that solves it.",
+                faq_2_q: "What tech stack do you use?", faq_2_a: "I specialize in the Modern Stack: React.js, Tailwind CSS, and Node.js. This ensures your project is fast, scalable, and easy to maintain.",
+                faq_3_q: "Can I see the code before buying?", faq_3_a: "Yes! I provide 'Code Previews' for my projects. You can see snippets of the logic structure to ensure quality.",
+
+                projects_title: "Proven Solutions", projects_subtitle: "Real-world applications categorized by strategic impact.",
+                tab_platforms: "SaaS & Ecosystems", tab_growth: "Growth & Sales", tab_tools: "Interactive Tools",
+                
+                other_title: "Other Technical Explorations", other_subtitle: "Previous iterations, experimental layouts, and specific industry templates.",
+                
+                btn_demo: "Live Demo",
+                
+                contact_title: "Have a Problem to Solve?", contact_subtitle: "You don't need code; you need a solution. Let's discuss how we can achieve your goals.",
+                form_submit: "Start the Conversation",
+                footer_rights: "© 2025 Badye Kebir. Strategic Web Development.",
+                modal_blur: "... Full source code hidden for protection ...",
+                modal_buy: "Ask to Buy Source Code", modal_close: "Close"
+            },
+            fr: {
+                nav_value: "Ma Valeur",nav_valu: "Mes Compétences", nav_offer: "Services", nav_projects: "Projets", nav_contact: "Me Recruter",
+                hero_badge: "Développement Stratégique",
+                hero_h1_1: "Je ne fais pas que du code.", hero_h1_2: "Je conçois la croissance.",
+                hero_desc: "Les entreprises n'ont pas besoin de plus de sites web; elles ont besoin de systèmes qui fonctionnent. Je transforme les problèmes complexes en plateformes rentables.",
+                hero_cta_work: "Voir les Solutions", hero_cta_talk: "Parler de votre projet",
+                
+                value_title: "Ma Valeur Ajoutée", value_subtitle: "Au-delà de la technique : des résultats commerciaux concrets.",
+                val_1_title: "Écosystèmes Évolutifs", val_1_desc: "Création de plateformes complexes (SaaS) où les données et la logique interagissent parfaitement.",
+                val_2_title: "Focus Conversion", val_2_desc: "Des pages d'atterrissage conçues psychologiquement pour transformer les visiteurs en clients.",
+                val_3_title: "Performance & Logique", val_3_desc: "Algorithmes optimisés pour garantir rapidité et référencement SEO.",
+
+                // --- NEW SKILLS SECTION FR ---
+                skills_title: "Arsenal Technique", 
+                skills_subtitle: "Des technologies modernes conçues pour offrir vitesse, intelligence et évolutivité.",
+                sk_1_title: "UI/UX Fluide et Moderne", sk_1_desc: "Des interfaces ultra-modernes et parfaites au pixel près qui s'adaptent parfaitement à toutes les tailles d'écran.",
+                sk_2_title: "Intégration IA & API", sk_2_desc: "Renforcement des applications avec des prompts IA, des intégrations API profondes et des solutions cloud via Azure.",
+                sk_3_title: "Données en Temps Réel", sk_3_desc: "Authentification sécurisée et synchronisation des données en direct ultrarapide grâce aux écosystèmes Supabase et Firebase.",
+                sk_4_title: "Architecture Serverless", sk_4_desc: "Déploiement fluide et logique backend évolutive utilisant Vercel, Netlify et des fonctions serverless performantes.",
+
+                offer_title: "Que puis-je vous offrir ?",
+                offer_desc: "Des réponses transparentes. Je comble le fossé entre 'J'ai besoin d'un site' et 'J'ai besoin de revenus'.",
+                offer_link: "Lancer une consultation",
+                faq_1_q: "Écrivez-vous juste du code ?", faq_1_a: "Non. Je construis des solutions commerciales. Je commence par comprendre votre goulot d'étranglement, puis je conçois l'outil numérique qui le résout.",
+                faq_2_q: "Quelle technologie utilisez-vous ?", faq_2_a: "Je suis spécialisé dans la stack moderne : React.js, Tailwind CSS et Node.js. Votre projet sera rapide et évolutif.",
+                faq_3_q: "Puis-je voir le code avant d'acheter ?", faq_3_a: "Oui ! Je fournis des 'Aperçus de Code'. Vous pouvez voir des extraits de la logique pour garantir la qualité.",
+
+                projects_title: "Solutions Prouvées", projects_subtitle: "Des applications réelles résolvant des problèmes réels.",
+                tab_platforms: "SaaS & Plateformes", tab_growth: "Vente & Croissance", tab_tools: "Outils Interactifs",
+                
+                other_title: "Autres Explorations Techniques", other_subtitle: "Itérations précédentes, mises en page expérimentales et modèles industriels.",
+
+                btn_demo: "Voir le site",
+                
+                contact_title: "Un défi à relever ?", contact_subtitle: "Vous n'avez pas besoin de code, vous avez besoin d'une solution. Discutons de vos objectifs.",
+                form_submit: "Lancer la discussion",
+                footer_rights: "© 2025 Badye Kebir. Développement Web Stratégique.",
+                modal_blur: "... Code source complet masqué ...",
+                modal_buy: "Acheter le Code Source", modal_close: "Fermer"
+            }
+        
+        };
+
+        // --- Logic: Language Switcher ---
+        let currentLang = 'en';
+        document.getElementById('lang-toggle').addEventListener('click', toggleLang);
+        document.getElementById('mobile-lang-toggle').addEventListener('click', toggleLang);
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            document.getElementById('current-lang').textContent = currentLang.toUpperCase();
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
+            });
+
+            // Update placeholders
+            if(currentLang === 'fr') {
+                document.getElementById('name').placeholder = "Votre Nom";
+                document.getElementById('message').placeholder = "Décrivez le défi que vous affrontez...";
+            } else {
+                document.getElementById('name').placeholder = "Your Name";
+                document.getElementById('message').placeholder = "Describe the challenge you are facing...";
+            }
+        }
+
+        // --- Logic: Accordion ---
+        function toggleAccordion(element) {
+            const content = element.querySelector('.accordion-content');
+            const isActive = element.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.accordion-content').style.maxHeight = null;
+                item.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+            });
+
+            // Open clicked if not already open
+            if (!isActive) {
+                element.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+                element.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // --- Logic: Tabs ---
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+                tabContents[i].style.display = "none";
+            }
+            const tabLinks = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            const selectedTab = document.getElementById(tabName);
+            selectedTab.style.display = "grid";
+            void selectedTab.offsetWidth; // Force reflow
+            selectedTab.classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // --- Logic: Modal & Buying ---
+        const modal = document.getElementById('code-modal');
+        let activeProjectTitle = "";
+
+        function openModal(id) {
+            const data = projectData[id];
+            if(!data) return;
+            activeProjectTitle = data.title;
+            document.getElementById('modal-project-name').textContent = data.title;
+            document.getElementById('modal-code-content').textContent = data.code;
+            
+            modal.classList.remove('hidden');
+            const panel = modal.querySelector('.transform');
+            panel.classList.add('modal-enter');
+            setTimeout(() => panel.classList.add('modal-enter-active'), 10);
+        }
+
+        function closeModal() {
+            const panel = modal.querySelector('.transform');
+            panel.classList.remove('modal-enter-active');
+            panel.classList.add('modal-exit-active');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                panel.classList.remove('modal-exit-active');
+            }, 200);
+        }
+
+        function buyCode() {
+            closeModal();
+            document.getElementById('contact').scrollIntoView();
+            setTimeout(() => {
+                const msgBox = document.getElementById('message');
+                const text = currentLang === 'en' 
+                    ? `Hello Badye, I am interested in buying the source code for: "${activeProjectTitle}".`
+                    : `Bonjour Badye, je suis intéressé par l'achat du code source de : "${activeProjectTitle}".`;
+                msgBox.value = text;
+                msgBox.focus();
+            }, 500);
+        }
+
+        // --- Logic: Back To Top & Scroll ---
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'translate-y-10');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- Logic: Contact Form ---
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            
+            emailjs.send("service_uq78qj9", "template_z0lvjcd", {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            }).then(() => {
+                document.getElementById('formMessage').textContent = currentLang === 'en' ? "Message Sent Successfully!" : "Message Envoyé avec Succès!";
+                document.getElementById('formMessage').classList.add('text-green-400');
+                this.reset();
+                btn.innerHTML = originalText;
+            }, () => {
+                document.getElementById('formMessage').textContent = "Error.";
+                document.getElementById('formMessage').classList.add('text-red-400');
+                btn.innerHTML = originalText;
+            });
+        });
+
+        // --- Logic: Mobile Menu ---
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // --- Logic: Reveal Animation ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    </script>
+</body>
+</html>
