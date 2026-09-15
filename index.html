@@ -1,759 +1,885 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Badye | Modern Web Developer</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; }
-        h1, h2, h3, h4, .font-heading { font-family: 'Outfit', sans-serif; }
-        
-        /* Custom Warm Gradient */
-        .warm-gradient {
-            background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
-        }
-        .warm-text {
-            background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Badye — Web developer building websites, platforms, SaaS products, AI integrations, APIs and automation systems.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Badye — Web Developer</title>
 
-        /* Hero Background */
-        .hero-bg {
-            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
-        }
+  <!-- Bootstrap + Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        /* Floating Animation */
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(-6deg); }
-            50% { transform: translateY(-15px) rotate(-4deg); }
-            100% { transform: translateY(0px) rotate(-6deg); }
-        }
-        .floating-folder {
-            animation: float 6s ease-in-out infinite;
-            box-shadow: -20px 20px 60px rgba(221, 36, 118, 0.2);
-        }
+  <!-- Icons + Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-        /* Tabs */
-        .tab-content { display: none; opacity: 0; animation: fadeIn 0.4s forwards; }
-        .tab-content.active { display: grid; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .tab-btn.active { 
-            background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%);
-            color: white; 
-            border-color: transparent;
-            box-shadow: 0 4px 15px rgba(255, 81, 47, 0.3);
-        }
+  <style>
+    :root{
+      --ink:#101114;
+      --muted:#65676f;
+      --line:#e8e8e5;
+      --soft:#f7f7f4;
+      --green:#0ea5e9;
+      --green-dark:#0284c7;
+      --lime:#d9edff;
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:"DM Sans",sans-serif;color:var(--ink);background:#fff; -webkit-font-smoothing: antialiased;}
+    h1,h2,h3,h4,.display-font{font-family:"Space Grotesk",sans-serif;}
+    a{text-decoration:none}
+    .container-xl{max-width:1240px}
 
-        /* Cards */
-        .project-card { transition: all 0.3s ease; border: 1px solid #f0f0f0; }
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(221, 36, 118, 0.15); border-color: #ff512f; }
-        
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Offset anchors below the fixed header */
+    section[id]{scroll-margin-top:84px}
 
-        /* Dual image split */
-        .dual-img-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 13rem;
-            overflow: hidden;
-        }
-        .dual-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-        .project-card:hover .dual-img-wrap img { transform: scale(1.06); }
-        .dual-img-wrap .divider {
-            width: 2px;
-            background: white;
-            z-index: 2;
-            position: relative;
-        }
-    </style>
+    /* Upwork Style Header */
+    .nav-shell{border-bottom:1px solid var(--line);background:rgba(255,255,255,.94);backdrop-filter:blur(14px)}
+    .brand{font:700 1.55rem "Space Grotesk";letter-spacing:-.07em;color:#111}
+    .brand span{color:var(--green)}
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop') center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      /* FIX: give content space under the fixed navbar */
+      padding-top: 110px;
+      padding-bottom: 60px;
+      width: 100%;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      max-width: 800px;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #d1d5db;
+      max-width: 600px;
+    }
+
+    /* Toggle & Search */
+    .toggle-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 4px;
+      display: inline-flex;
+    }
+    .toggle-pill button {
+      border-radius: 999px;
+      padding: 10px 24px;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: none;
+    }
+    .toggle-pill button.active {
+      background: #fff;
+      color: #111;
+    }
+    .toggle-pill button.inactive {
+      color: #fff;
+      background: transparent;
+      cursor: pointer;
+    }
+    .toggle-pill button.inactive:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .search-container {
+      position: relative;
+      max-width: 600px;
+    }
+    .search-container input {
+      width: 100%;
+      padding: 18px 24px;
+      padding-right: 60px;
+      border-radius: 999px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
+    .search-container button {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      border: none;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-container button:hover {
+      background: var(--green-dark);
+    }
+
+    /* Category Grid */
+    .category-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      background: #fff;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      cursor: pointer;
+    }
+    .category-card:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+      transform: translateY(-3px);
+      border-color: var(--green);
+    }
+    .category-card .icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #f0f9ff;
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      margin-top: 16px;
+      align-self: flex-end;
+    }
+
+    /* How it works dark card */
+    .how-card {
+      background: #0d0e12;
+      border-radius: 24px;
+      padding: 40px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .glow-circle {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #7dd3fc, #0ea5e9, #075985);
+      box-shadow: 0 0 40px rgba(14, 165, 233, 0.6), inset 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    /* Work group headings */
+    .work-group-title{
+      font:700 1.05rem "Space Grotesk";
+      letter-spacing:-.02em;
+      display:flex;align-items:center;gap:12px;
+      color:var(--ink);
+    }
+    .work-group-title .count{
+      background:#e0f2fe;color:var(--green-dark);
+      border-radius:999px;padding:3px 11px;font-size:.75rem;
+    }
+    .work-group-title:after{
+      content:"";flex:1;height:1px;background:var(--line);
+    }
+
+    /* Service Cards */
+    .service-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff;height:100%;transition:.25s}
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 18px 45px rgba(0,0,0,.07);border-color:#bae6fd}
+    .service-icon{width:46px;height:46px;border-radius:14px;background:#e0f2fe;color:var(--green);display:grid;place-items:center;font-size:1.1rem;margin-bottom:24px}
+
+    /* Stats */
+    .stat-box{border:1px solid var(--line);border-radius:20px;padding:26px 20px;background:#fff;text-align:center;height:100%;transition:.25s}
+    .stat-box:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(0,0,0,.06);border-color:#bae6fd}
+    .stat-box .num{font:700 2.2rem "Space Grotesk";letter-spacing:-.03em;color:var(--green-dark)}
+    .stat-box .lbl{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+
+    /* Work Cards */
+    .project-card{border:1px solid var(--line);border-radius:26px;overflow:hidden;background:#fff;height:100%;transition:.28s}
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 22px 55px rgba(0,0,0,.09)}
+    .project-visual{height:230px;position:relative;overflow:hidden;background:#111}
+    .project-visual img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .project-card:hover .project-visual img{transform:scale(1.045)}
+    .project-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.42),transparent 55%)}
+    .project-type{position:absolute;z-index:2;top:15px;left:15px;background:#fff;color:#111;border-radius:999px;padding:6px 10px;font-size:.7rem;font-weight:800}
+    .project-number{position:absolute;z-index:2;right:16px;bottom:14px;color:#fff;font:700 1.4rem "Space Grotesk";opacity:.9}
+    .project-body{padding:23px}
+    .project-tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 20px}
+    .project-tags span{background:#f4f4f1;border-radius:999px;padding:5px 8px;font-size:.67rem;font-weight:700;color:#56585e}
+
+    /* Buttons */
+    .btn-green{background:var(--green);color:#fff;border:1px solid var(--green);font-weight:700}
+    .btn-green:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+    .btn-darkline{border:1.5px solid #171717;color:#171717;font-weight:700;background:#fff}
+    .btn-darkline:hover{background:#111;color:#fff}
+
+    /* RTL Fixes */
+    [dir="rtl"] .hero h1,[dir="rtl"] .section-title{letter-spacing:-.04em}
+    [dir="rtl"] .project-type{left:auto;right:15px}
+    [dir="rtl"] .project-number{right:auto;left:16px}
+    [dir="rtl"] .search-container button { right: auto; left: 8px; }
+    [dir="rtl"] .search-container input { padding-right: 24px; padding-left: 60px; }
+
+    /* ===== FIX: Mobile navigation — no flicker, always readable ===== */
+    #mobileNav{
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      z-index:2000;
+      background:#fff;
+      border-top:1px solid var(--line);
+      box-shadow:0 24px 45px rgba(0,0,0,.10);
+      display:none;
+      max-height:calc(100vh - 70px);
+      overflow-y:auto;
+    }
+    #mobileNav.open{display:block}
+    #mobileNav a{
+      color:#111 !important;              /* never white */
+      opacity:0;
+      transform:translateY(-8px);
+      animation:navItemIn .28s ease forwards;
+    }
+    #mobileNav a:nth-child(1){animation-delay:.02s}
+    #mobileNav a:nth-child(2){animation-delay:.08s}
+    #mobileNav a:nth-child(3){animation-delay:.14s}
+    #mobileNav a:nth-child(4){animation-delay:.20s}
+    @keyframes navItemIn{to{opacity:1;transform:translateY(0)}}
+
+    /* Cleaner language picker */
+    .lang-select{
+      appearance:none;
+      -webkit-appearance:none;
+      min-width:76px;
+      padding:7px 30px 7px 13px !important;
+      line-height:1.2;
+      background-color:#fff !important;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23101114' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7' d='m3 6 5 5 5-5'/%3E%3C/svg%3E") !important;
+      background-repeat:no-repeat !important;
+      background-position:right 10px center !important;
+      background-size:12px !important;
+      box-shadow:none !important;
+    }
+    #langSelectMobile{
+      appearance:none;
+      -webkit-appearance:none;
+      min-width:70px;
+      padding:7px 28px 7px 12px !important;
+      line-height:1.2;
+      background-color:#fff !important;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23101114' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7' d='m3 6 5 5 5-5'/%3E%3C/svg%3E") !important;
+      background-repeat:no-repeat !important;
+      background-position:right 9px center !important;
+      background-size:12px !important;
+      box-shadow:none !important;
+    }
+
+    .section-label{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+    /* organized project boxes: equal heights, aligned content */
+    #projectsGrid>[class*="col"]{display:flex}
+    .project-card{display:flex;flex-direction:column}
+    .project-body{display:flex;flex-direction:column;flex:1}
+    .project-body a:last-child{margin-top:auto;padding-top:8px}
+  </style>
 </head>
-<body class="text-slate-800 selection:bg-orange-500 selection:text-white">
 
-    <!-- Navbar -->
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-100 fixed top-0 left-0 right-0 z-50 shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-black text-slate-900 tracking-tighter font-heading group">
-                Badye<span class="warm-text group-hover:opacity-80 transition-opacity">.</span>Dev
-            </a>
-            
-            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
-                <a href="#projects" class="hover:text-orange-500 transition-colors" data-i18n="nav_projects">Portfolio</a>
-                <a href="#about" class="hover:text-orange-500 transition-colors" data-i18n="nav_about">About</a>
-                <a href="#contact" class="warm-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:shadow-orange-500/30 transition-all hover:-translate-y-0.5" data-i18n="nav_contact">Got Questions?</a>
-                
-                <button id="lang-toggle" class="flex items-center space-x-2 border border-slate-200 px-3 py-1.5 rounded-full hover:bg-slate-50 transition group font-bold text-xs">
-                    <i class="fas fa-globe text-orange-500"></i>
-                    <span id="current-lang">EN</span>
-                </button>
+<body>
+<!-- Header -->
+<header class="nav-shell fixed-top z-50">
+  <nav class="container-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <button id="menuBtn" class="btn btn-light border rounded-circle d-flex d-lg-none" aria-label="Menu" aria-expanded="false">
+        <i class="fa-solid fa-bars" id="menuIcon"></i>
+      </button>
+      <a href="#home" class="brand">Badye<span>.</span>Dev</a>
+    </div>
+
+    <div class="nav-desktop flex items-center gap-7 d-none d-lg-flex">
+      <a class="nav-link-custom fw-semibold text-dark" href="#services" data-i18n="nav_services">Services</a>
+      <a class="nav-link-custom fw-semibold text-dark" href="#work" data-i18n="nav_work">Work</a>
+      <a class="nav-link-custom fw-semibold text-dark" href="#about" data-i18n="nav_about">About</a>
+      <a class="nav-link-custom fw-semibold text-dark" href="#contact" data-i18n="nav_contact">Contact</a>
+      <select id="langSelect" class="lang-select form-select form-select-sm rounded-pill fw-bold border-dark" style="width: auto;" aria-label="Language">
+        <option value="en">EN</option><option value="fr">FR</option><option value="ar">AR</option>
+      </select>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <select id="langSelectMobile" class="form-select form-select-sm rounded-pill fw-bold border-dark d-lg-none" style="width: auto;">
+        <option value="en">EN</option><option value="fr">FR</option><option value="ar">AR</option>
+      </select>
+      <a href="#contact" class="btn btn-green rounded-pill px-4 py-2 fw-bold text-sm" data-i18n="hero_primary">Hire me</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav (custom toggle, no flicker) -->
+  <div id="mobileNav">
+    <div class="container px-4 py-4 d-flex flex-column gap-1">
+      <a class="nav-link-custom fw-semibold py-2 border-bottom" href="#services" data-i18n="nav_services">Services</a>
+      <a class="nav-link-custom fw-semibold py-2 border-bottom" href="#work" data-i18n="nav_work">Work</a>
+      <a class="nav-link-custom fw-semibold py-2 border-bottom" href="#about" data-i18n="nav_about">About</a>
+      <a class="nav-link-custom fw-semibold py-2" href="#contact" data-i18n="nav_contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container-xl mx-auto px-4 hero-content">
+      <h1 data-i18n="hero_title">Need a website or web app? I build it from idea to deployment.</h1>
+      <p class="mt-4 mb-5" data-i18n="hero_desc">I build modern websites, web platforms and SaaS products, integrate APIs and AI, and automate the systems behind them.</p>
+
+      <!-- Toggle -->
+      <div class="toggle-pill mb-4">
+        <button class="active" data-i18n="hero_toggle_hire">I need a developer</button>
+        <button class="inactive" id="viewWorkBtn" data-i18n="hero_toggle_work">View my work</button>
+      </div>
+
+      <!-- Search -->
+      <div class="search-container">
+        <input type="text" placeholder="What do you need to build?" data-i18n="hero_search" id="searchInput">
+        <button type="button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="d-flex gap-2 mt-4 flex-wrap">
+        <a href="#services" class="badge bg-transparent border border-white text-white rounded-pill px-3 py-2 fw-normal" data-i18n="hero_tag_1">Websites &amp; Web Apps <i class="fa-solid fa-arrow-right ms-1"></i></a>
+        <a href="#services" class="badge bg-transparent border border-white text-white rounded-pill px-3 py-2 fw-normal" data-i18n="hero_tag_2">AI Integration <i class="fa-solid fa-arrow-right ms-1"></i></a>
+        <a href="#services" class="badge bg-transparent border border-white rounded-pill px-3 py-2 fw-normal" data-i18n="hero_tag_3">APIs &amp; Automation <i class="fa-solid fa-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted By / Proof Strip -->
+  <div class="py-4 bg-light border-bottom">
+    <div class="container-xl mx-auto px-4">
+      <p class="text-center text-muted small fw-bold mb-3 text-uppercase tracking-wider" data-i18n="trusted_by">Built with modern web technologies</p>
+      <div class="d-flex justify-content-center align-items-center gap-4 flex-wrap" style="color:#94a3b8">
+        <span style="font:800 1.15rem 'Space Grotesk';letter-spacing:-.02em">Cloudflare</span>
+        <span style="font:italic 700 1.2rem 'Instrument Serif'">Firebase</span>
+        <span style="font:600 1.05rem 'DM Sans';letter-spacing:.08em">SUPABASE</span>
+        <span style="font:800 1.05rem 'Space Grotesk'">Mistral AI</span>
+        <span style="font:700 1.15rem 'Instrument Serif'">Lemon Squeezy</span>
+        <span style="font:700 1rem 'DM Sans'">n8n</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services / Category Grid -->
+  <section id="services" class="py-5 bg-white">
+    <div class="container-xl mx-auto px-4">
+      <div class="mb-5">
+        <div class="section-label mb-3" data-i18n="services_label">What I build</div>
+        <h2 class="section-title fw-bold mb-3" data-i18n="services_title">From a landing page to a connected product.</h2>
+        <p class="text-muted" data-i18n="services_intro">My work sits between frontend development, backend services, APIs, cloud infrastructure and AI.</p>
+      </div>
+
+      <div class="row g-3">
+        <!-- Category Card 1 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="category-card">
+            <span class="fw-bold text-dark" data-i18n="svc_static_title">Static & Business Websites</span>
+            <div class="icon-wrap"><i class="fa-solid fa-window-maximize"></i></div>
+          </div>
+        </div>
+        <!-- Category Card 2 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="category-card">
+            <span class="fw-bold text-dark" data-i18n="svc_platform_title">Platforms & Web Apps</span>
+            <div class="icon-wrap"><i class="fa-solid fa-layer-group"></i></div>
+          </div>
+        </div>
+        <!-- Category Card 3 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="category-card">
+            <span class="fw-bold text-dark" data-i18n="svc_saas_title">SaaS Products</span>
+            <div class="icon-wrap"><i class="fa-solid fa-cube"></i></div>
+          </div>
+        </div>
+        <!-- Category Card 4 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="category-card">
+            <span class="fw-bold text-dark" data-i18n="svc_ai_title">AI Integration</span>
+            <div class="icon-wrap"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          </div>
+        </div>
+        <!-- Category Card 5 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="category-card">
+            <span class="fw-bold text-dark" data-i18n="svc_api_title">APIs & Integrations</span>
+            <div class="icon-wrap"><i class="fa-solid fa-plug"></i></div>
+          </div>
+        </div>
+        <!-- Category Card 6 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="category-card">
+            <span class="fw-bold text-dark" data-i18n="svc_auto_title">Automation</span>
+            <div class="icon-wrap"><i class="fa-solid fa-gears"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-5 bg-light">
+    <div class="container-xl mx-auto px-4 text-center">
+      <h2 class="section-title fw-bold mb-4" data-i18n="how_title">How it works</h2>
+
+      <div class="toggle-pill mb-4" style="background:#e5e7eb; border-color:#d1d5db;">
+        <button class="active" style="background:#111; color:#fff;" data-i18n="how_toggle_hire">For clients</button>
+        <button class="inactive" style="color:#4b5563;" data-i18n="how_toggle_work">My process</button>
+      </div>
+
+      <div class="how-card mx-auto" style="max-width: 800px;">
+        <div class="row g-4 mb-4">
+          <div class="col-6"><div class="glow-circle"></div></div>
+          <div class="col-6"><div class="glow-circle"></div></div>
+          <div class="col-6"><div class="glow-circle"></div></div>
+          <div class="col-6"><div class="glow-circle"></div></div>
+        </div>
+        <p class="text-center text-gray-400 fw-bold fs-4 mb-0" data-i18n="how_card_text">One developer, every layer of your product</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section id="work" class="py-5 bg-white">
+    <div class="container-xl mx-auto px-4">
+      <div class="mb-5">
+        <div class="section-label mb-3" data-i18n="work_label">Selected work</div>
+        <h2 class="section-title fw-bold mb-3" data-i18n="work_title">Built across different layers of the web.</h2>
+        <p class="text-muted" data-i18n="work_intro">A mix of client-style websites, full web applications, SaaS experiments and systems where the interface is only one part of the product.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="d-flex gap-2 overflow-auto pb-3 mb-3" style="scrollbar-width: none;">
+        <button class="btn btn-dark rounded-pill px-4 fw-bold filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="static" data-i18n="filter_static">Static</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="platforms" data-i18n="filter_platforms">Platforms</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="saas" data-i18n="filter_saas">SaaS</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="automation" data-i18n="filter_automation">Automation</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="ai" data-i18n="filter_ai">AI Integration</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="api" data-i18n="filter_api">APIs</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projectsGrid" class="row g-4 mt-2">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Product -->
+  <section class="py-5 bg-light">
+    <div class="container-xl mx-auto px-4">
+      <div class="bg-dark text-white rounded-4 overflow-hidden shadow-lg">
+        <div class="row g-0">
+          <div class="col-lg-6 p-5 d-flex flex-column justify-content-center">
+            <div class="section-label mb-3" style="color:#7dd3fc" data-i18n="featured_label">Featured product</div>
+            <h2 class="display-6 fw-bold mb-4" data-i18n="featured_title">InvoiceFlowly turns messy client messages into invoices.</h2>
+            <p class="text-secondary mb-4" data-i18n="featured_desc">A complete SaaS product: AI-powered extraction, smart price suggestion, authentication, profile settings, PDF/Excel exports, history and a paid plan flow.</p>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span class="badge bg-secondary rounded-pill px-3 py-2">AI</span>
+              <span class="badge bg-secondary rounded-pill px-3 py-2">Cloudflare</span>
+              <span class="badge bg-secondary rounded-pill px-3 py-2">SaaS</span>
+              <span class="badge bg-secondary rounded-pill px-3 py-2">Lemon Squeezy</span>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-bg pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-            <div class="hero-overlay"></div>
-            
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    
-                    <!-- Left: Text -->
-                    <div>
-                        <div class="inline-block px-4 py-1.5 rounded-full border border-orange-200 bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-widest mb-6">
-                            <i class="fas fa-code mr-2"></i><span data-i18n="hero_badge">Web Developer & Designer</span>
-                        </div>
-                        
-                        <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight font-heading text-slate-900">
-                            <span data-i18n="hero_h1_1">Crafting Digital</span><br>
-                            <span class="warm-text" data-i18n="hero_h1_2">Experiences That Sell.</span>
-                        </h1>
-                        
-                        <p class="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed" data-i18n="hero_desc">
-                            Specialized in building high-converting e-commerce, elegant corporate websites, and smart digital solutions for modern businesses.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-4">
-                            <a href="#projects" class="warm-gradient text-white px-8 py-3.5 rounded-full font-bold shadow-lg shadow-orange-500/30 hover:-translate-y-1 transition-transform" data-i18n="btn_work">
-                                View Portfolio
-                            </a>
-                            <a href="#contact" class="px-8 py-3.5 rounded-full font-bold border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white transition-colors" data-i18n="btn_ask">
-                                Ask a Question
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Right: Diagonal Image -->
-                    <div class="relative hidden lg:block perspective-1000">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30"></div>
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/4 w-72 h-72 bg-rose-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30"></div>
-                        
-                        <div class="relative z-10 floating-folder transform -rotate-6 rounded-2xl overflow-hidden border-8 border-white bg-white w-[90%] ml-auto">
-                            <div class="bg-slate-100 px-4 py-2 border-b border-slate-200 flex gap-2 items-center">
-                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                                <div class="ml-4 text-xs text-slate-400 font-mono">portfolio_projects/</div>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Web Development" class="w-full h-80 object-cover">
-                        </div>
-                    </div>
-
-                </div>
+            <a href="https://invoiceflowly.com" target="_blank" rel="noopener" class="btn btn-light rounded-pill px-4 py-3 fw-bold align-self-start" data-i18n="featured_btn">Open InvoiceFlowly →</a>
+          </div>
+          <div class="col-lg-6 bg-gradient-to-br from-sky-100 to-white p-5 d-flex align-items-center justify-content-center">
+            <div class="bg-white text-dark rounded-4 p-4 shadow w-100" style="max-width: 400px;">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <strong>InvoiceFlowly</strong>
+                <span class="text-muted small">AI invoice</span>
+              </div>
+              <div class="bg-secondary bg-opacity-25 rounded-pill mb-2" style="height: 9px; width: 75%;"></div>
+              <div class="bg-secondary bg-opacity-25 rounded-pill mb-2" style="height: 9px; width: 100%;"></div>
+              <div class="bg-secondary bg-opacity-25 rounded-pill mb-4" style="height: 9px; width: 52%;"></div>
+              <hr>
+              <div class="row g-2 text-center text-muted small">
+                <div class="col-6 bg-light rounded-3 p-3">Client<br><strong class="text-dark">Alex IT</strong></div>
+                <div class="col-6 bg-light rounded-3 p-3">Total<br><strong class="text-dark">$1,250</strong></div>
+              </div>
+              <div class="mt-3 p-3 rounded-3 text-center small fw-bold" style="background:#e0f2fe;color:#0284c7">AI extracted invoice data + suggested pricing</div>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 font-heading" data-i18n="sec_title">Selected Works</h2>
-                    <div class="w-20 h-1 warm-gradient mx-auto rounded-full mb-4"></div>
-                </div>
+  <!-- About -->
+  <section id="about" class="py-5 bg-white">
+    <div class="container-xl mx-auto px-4">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="p-4 border rounded-4 h-100 bg-light">
+            <div class="section-label mb-3" data-i18n="about_label">About</div>
+            <h2 class="section-title fw-bold mb-4" data-i18n="about_title">A developer focused on useful systems, not just screens.</h2>
+            <p class="text-muted lh-lg mb-3" data-i18n="about_desc1">I work across the frontend and the infrastructure behind it. That means I can take a project from a clean interface to authentication, databases, APIs, cloud services and automation.</p>
+            <p class="text-muted lh-lg" data-i18n="about_desc2">My strongest focus is websites, platforms, SaaS products, AI integration and automation — with a practical approach to shipping and keeping the architecture simple where possible.</p>
+            <p class="text-muted lh-lg mb-0"><strong>Languages:</strong> Arabic (native), French (fluent), English (professional). I build multilingual and RTL-ready products, and I work comfortably with international clients.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-4 border rounded-4 h-100">
+            <div class="section-label mb-3" data-i18n="stack_label">Stack & tools</div>
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+), React, responsive &amp; mobile-first UI</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Backend & data:</strong> Firebase, Supabase, SQL/NoSQL databases, serverless functions, REST APIs</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Cloud & DevOps:</strong> Cloudflare Workers, D1, KV, R2, Google Cloud, Azure, CI/CD basics</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>AI:</strong> Mistral AI, Azure AI and external AI APIs — extraction, enrichment, generation</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Automation:</strong> n8n, webhooks, data pipelines, Excel/PDF exports, lead generation flows</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Payments:</strong> Lemon Squeezy checkout, subscriptions and product billing flows</span></li>
+              <li class="d-flex gap-3 py-3"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Design & delivery:</strong> Git/GitHub, Figma-to-code, SEO basics, performance, RTL/i18n</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-                <!-- Swipe Indicator for Mobile -->
-                <div class="md:hidden flex justify-end items-center gap-2 text-xs text-orange-500 font-bold mb-3 animate-pulse">
-                    <span data-i18n="swipe_hint">Swipe for more categories</span>
-                    <i class="fas fa-arrow-right-long"></i>
-                </div>
+      <!-- Stats -->
+      <div class="row g-3 mt-2">
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="num" data-count="16">0</div>
+            <div class="lbl" data-i18n="stat_projects">Projects shipped</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="num" data-count="3">0</div>
+            <div class="lbl" data-i18n="stat_langs">Working languages</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="num" data-count="10">0</div>
+            <div class="lbl" data-i18n="stat_tech">Technologies</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <div class="num" data-count="100" data-suffix="%">0</div>
+            <div class="lbl" data-i18n="stat_focus">Product focus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <!-- Tabs Menu -->
-                <div class="flex flex-nowrap overflow-x-auto justify-start md:justify-center gap-3 mb-12 pb-4 px-2 no-scrollbar">
-                    
-                    <button class="tab-btn active flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2" onclick="openTab(event, 'corp-tab')">
-                        <i class="fa-solid fa-building"></i> <span data-i18n="tab_corp">Companies</span>
-                    </button>
-                    
-                    <button class="tab-btn flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2" onclick="openTab(event, 'ecom-tab')">
-                        <i class="fa-solid fa-cart-shopping"></i> <span data-i18n="tab_ecom">E-Commerce</span>
-                    </button>
-                    
-                    <button class="tab-btn flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2" onclick="openTab(event, 'qr-tab')">
-                        <i class="fa-solid fa-qrcode"></i> <span data-i18n="tab_qr">QR Menus</span>
-                    </button>
+  <!-- CTA -->
+  <section id="contact" class="py-5" style="background: #e0f2fe; border-top: 1px solid #c9e6f7; border-bottom: 1px solid #c9e6f7;">
+    <div class="container-xl mx-auto px-4 text-center">
+      <div class="section-label mb-3" data-i18n="cta_label">Have a project?</div>
+      <h2 class="display-5 fw-bold mx-auto mb-4" style="max-width: 800px; letter-spacing: -0.04em;" data-i18n="cta_title">Tell me what needs to be built. I’ll turn it into a working product.</h2>
+      <p class="text-muted mx-auto mb-5" style="max-width: 600px;" data-i18n="cta_desc">Websites, platforms, SaaS, AI features, APIs or automation systems — send the idea, the problem and the goal.</p>
+      <div class="d-flex justify-content-center flex-wrap gap-3">
+        <a href="mailto:kebirbadie@gmail.com" class="btn btn-green rounded-pill px-4 py-3"><i class="fa-solid fa-envelope me-2"></i><span data-i18n="cta_email">Email me</span></a>
+        <a href="https://wa.me/213775792838" target="_blank" rel="noopener" class="btn btn-darkline rounded-pill px-4 py-3"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp</a>
+      </div>
+      <p class="mt-4 mb-0 text-muted small">kebirbadie@gmail.com</p>
+    </div>
+  </section>
+</main>
 
-                    <button class="tab-btn flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2" onclick="openTab(event, 'med-tab')">
-                        <i class="fa-solid fa-user-doctor"></i> <span data-i18n="tab_med">Medical</span>
-                    </button>
+<!-- Footer -->
+<footer class="py-4 bg-dark text-secondary">
+  <div class="container-xl mx-auto px-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+    <div class="brand text-white">Badye<span style="color:var(--green)">.</span>Dev</div>
+    <div class="small" data-i18n="footer">© 2026 Badye. All rights reserved.</div>
+    <div class="small"><a href="mailto:kebirbadie@gmail.com" class="text-secondary">kebirbadie@gmail.com</a></div>
+  </div>
+</footer>
 
-                    <button class="tab-btn flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all flex items-center gap-2" onclick="openTab(event, 'other-tab')">
-                        <i class="fa-solid fa-rocket"></i> <span data-i18n="tab_other">Landing & Other</span>
-                    </button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="translations.js"></script>
+<script>
+  // ===== Project Data (grouped in logical order) =====
+  const projects = [
+    // ---- Static & Business Websites ----
+    {
+      title:"IT-Kane", category:["static"], type:"Business Website", group:"static",
+      desc:"Corporate website focused on clear service presentation, responsive design and straightforward conversion paths.",
+      url:"https://it-kane.netlify.app/",
+      image:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
+      tags:["Responsive","Corporate","UI"]
+    },
+    {
+      title:"O'Saveur Food", category:["static"], type:"Digital Menu", group:"static",
+      desc:"Mobile-first digital restaurant menu designed for QR access and fast browsing on phones.",
+      url:"https://osaveur-13.netlify.app/",
+      image:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
+      tags:["QR","Restaurant","Mobile"]
+    },
+    {
+      title:"Warska Café", category:["static"], type:"Multilingual Website", group:"static",
+      desc:"Multilingual café website in Arabic, French and English, including RTL support and language switching.",
+      url:"https://warska.netlify.app/",
+      image:"https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop",
+      tags:["AR/FR/EN","RTL","Responsive"]
+    },
+    {
+      title:"Oftaloo Clinic", category:["static"], type:"Medical Website", group:"static",
+      desc:"Clinic website concept focused on clear information, trust signals and appointment conversion.",
+      url:"https://mohamedbadye.github.io/Oftaloo/",
+      image:"https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1200&auto=format&fit=crop",
+      tags:["Healthcare","Leads","UI"]
+    },
+    {
+      title:"PagShop", category:["static"], type:"Landing Page", group:"static",
+      desc:"Conversion-focused product landing page with structured information, trust signals and a clear purchase path.",
+      url:"https://pagshop.netlify.app/",
+      image:"https://images.unsplash.com/photo-1472851294608-415105022052?q=80&w=1200&auto=format&fit=crop",
+      tags:["Landing","Conversion","E-commerce"]
+    },
 
-                </div>
+    // ---- Platforms & Web Apps ----
+    {
+      title:"Hirafiyin", category:["platforms","saas"], type:"Platform · SaaS", group:"platforms",
+      desc:"Service marketplace platform with artisan profiles, discovery, filtering and user flows designed around connecting customers with local professionals.",
+      url:"https://hirafiyin.com",
+      image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+      tags:["Firebase","Cloudinary","Auth"]
+    },
+    {
+      title:"EStore — 4SO", category:["platforms"], type:"E-Commerce", group:"platforms",
+      desc:"E-commerce storefront with product catalogue, cart flow and a streamlined responsive shopping experience.",
+      url:"https://estore-4so.pages.dev/",
+      image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop",
+      tags:["E-commerce","Catalog","Cart"]
+    },
+    {
+      title:"EStore — DM2", category:["platforms"], type:"E-Commerce", group:"platforms",
+      desc:"E-commerce concept with product pages, category filtering and a mobile-first shopping interface.",
+      url:"https://estore-dm2.pages.dev/",
+      image:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1200&auto=format&fit=crop",
+      tags:["Product pages","Filters","Mobile"]
+    },
+    {
+      title:"Medcinexo Hospital V5", category:["platforms"], type:"Dashboard", group:"platforms",
+      desc:"Hospital administration dashboard concept for organizing patient information and staff allocation.",
+      url:"https://medcinexo05.netlify.app/",
+      image:"https://images.pexels.com/photos/7579827/pexels-photo-7579827.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      tags:["Dashboard","Data","Healthcare"]
+    },
+    {
+      title:"Medcinexo Pharm V6", category:["platforms"], type:"Pharmacy System", group:"platforms",
+      desc:"Pharmacy management interface covering inventory, expiry dates, stock levels and sales workflows.",
+      url:"https://medcinexo06.netlify.app/",
+      image:"https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1200&auto=format&fit=crop",
+      tags:["Inventory","Expiry","Management"]
+    },
+    {
+      title:"Medcinexo Clinic V2", category:["platforms"], type:"Booking System", group:"platforms",
+      desc:"Clinic booking concept with scheduling logic and appointment management flows.",
+      url:"https://medcinexo02.netlify.app/",
+      image:"https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop",
+      tags:["Booking","Scheduling","UI"]
+    },
 
-                <!-- ============================================================ -->
-                <!-- Tab 1: Companies -->
-                <!-- ============================================================ -->
-                <div id="corp-tab" class="tab-content active grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    // ---- SaaS Products ----
+    {
+      title:"InvoiceFlowly", category:["saas","ai"], type:"SaaS · AI", group:"saas",
+      desc:"End-to-end SaaS product that turns messy client messages into structured invoices with AI, pricing suggestions, authentication, exports and billing.",
+      url:"https://invoiceflowly.com",
+      image:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop",
+      tags:["AI","Cloudflare","Lemon Squeezy"]
+    },
+    {
+      title:"Digital Menu Demo", category:["saas"], type:"SaaS Demo", group:"saas",
+      desc:"Reusable digital-menu SaaS concept demonstrating QR access, restaurant content and a product-style interface.",
+      url:"https://menu-exemple.netlify.app/",
+      image:"https://images.unsplash.com/photo-1568901346375-23c9450c58bc?q=80&w=1200&auto=format&fit=crop",
+      tags:["SaaS","QR","Restaurant"]
+    },
+    {
+      title:"Ecrii Editor", category:["saas"], type:"SaaS Tool", group:"saas",
+      desc:"Minimal writing tool with local persistence and a focused, distraction-free interface.",
+      url:"https://ecrii.netlify.app",
+      image:"https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop",
+      tags:["Tool","Local storage","UX"]
+    },
 
-                    <!-- IT-Kane Card -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <!-- Dual Image -->
-                        <div class="dual-img-wrap relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
-                                alt="IT Kane left"
-                                class="object-cover"
-                            >
-                            <div class="divider"></div>
-                            <img
-                                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop"
-                                alt="IT Kane right"
-                                class="object-cover"
-                            >
-                            <!-- Badge -->
-                            <div class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">IT / Tech</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">IT-Kane</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Elegant corporate website for an IT services company. Clean, professional, and conversion-focused design.</p>
-                            <a href="https://it-kane.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+    // ---- AI · APIs · Automation ----
+    {
+      title:"Google Maps Lead Automation", category:["automation","ai","api"], type:"Automation · AI", group:"automation",
+      desc:"Automation workflow that collects local businesses, enriches the data with AI, evaluates their web presence and exports qualified leads for outreach.",
+      url:"#contact",
+      image:"https://images.unsplash.com/photo-1524666041070-9a48e2a2f6b0?q=80&w=1200&auto=format&fit=crop",
+      tags:["Google Cloud","Mistral AI","Excel"]
+    },
+    {
+      title:"SkyCast Engine", category:["api"], type:"API / Data", group:"automation",
+      desc:"Web application consuming a weather API with asynchronous requests and a responsive data-driven interface.",
+      url:"https://wethar.netlify.app",
+      image:"https://images.unsplash.com/photo-1504608524841-42584120d693?q=80&w=1200&auto=format&fit=crop",
+      tags:["API","Async","Data"]
+    }
+  ];
 
-                </div>
+  const grid = document.getElementById("projectsGrid");
+  const filterButtons = document.querySelectorAll(".filter-btn");
 
-                <!-- ============================================================ -->
-                <!-- Tab 2: E-Commerce -->
-                <!-- ============================================================ -->
-                <div id="ecom-tab" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  const groupMeta = {
+    static:      { title: {en:"Static & Business Websites", fr:"Sites & Pages Vitrines", ar:"المواقع والصفحات الثابتة"} },
+    platforms:   { title: {en:"Platforms & Web Apps",       fr:"Plateformes & Applications Web", ar:"المنصات وتطبيقات الويب"} },
+    saas:        { title: {en:"SaaS Products",              fr:"Produits SaaS", ar:"منتجات SaaS"} },
+    automation:  { title: {en:"AI · APIs · Automation",     fr:"IA · APIs · Automatisation", ar:"الذكاء الاصطناعي · APIs · الأتمتة"} }
+  };
+  const groupOrder = ["static","platforms","saas","automation"];
 
-                    <!-- EStore 1 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop"
-                                alt="EStore left"
-                                class="object-cover"
-                            >
-                            <div class="divider"></div>
-                            <img
-                                src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800&auto=format&fit=crop"
-                                alt="EStore right"
-                                class="object-cover"
-                            >
-                            <div class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">E-Commerce</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">EStore — 4SO</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Modern online storefront with product catalogue, cart, and streamlined checkout experience.</p>
-                            <a href="https://estore-4so.pages.dev/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  function projectCard(p, i){
+    return `
+      <div class="col-md-6 col-lg-4">
+        <article class="project-card">
+          <div class="project-visual">
+            <img src="${p.image}" loading="lazy" alt="${p.title}">
+            <span class="project-type">${p.type}</span>
+            <span class="project-number">${String(i+1).padStart(2,"0")}</span>
+          </div>
+          <div class="project-body">
+            <h3 class="fs-5 fw-bold mb-2">${p.title}</h3>
+            <p class="text-muted small lh-base" style="min-height: 68px;">${p.desc}</p>
+            <div class="project-tags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div>
+            <a class="text-dark fw-bold text-decoration-none d-inline-flex align-items-center gap-1" href="${p.url}" target="${p.url.startsWith("#") ? "_self" : "_blank"}" rel="noopener" data-i18n="project_view">View project <i class="fa-solid fa-arrow-up-right-from-square ms-1 fs-6"></i></a>
+          </div>
+        </article>
+      </div>`;
+  }
 
-                    <!-- EStore 2 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=800&auto=format&fit=crop"
-                                alt="EStore DM2 left"
-                                class="object-cover"
-                            >
-                            <div class="divider"></div>
-                            <img
-                                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop"
-                                alt="EStore DM2 right"
-                                class="object-cover"
-                            >
-                            <div class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">E-Commerce</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">EStore — DM2</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Full-featured e-commerce store with dynamic product pages, category filtering, and mobile-first layout.</p>
-                            <a href="https://estore-dm2.pages.dev/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  function renderProjects(filter="all"){
+    let html = "";
+    let counter = 0;
 
-                </div>
+    if(filter === "all"){
+      // Grouped view with headings
+      const lang = document.documentElement.lang || "en";
+      groupOrder.forEach(g => {
+        const items = projects.filter(p => p.group === g);
+        if(!items.length) return;
+        const label = (groupMeta[g].title[lang] || groupMeta[g].title.en);
+        html += `
+          <div class="col-12">
+            <h3 class="work-group-title mb-1">${label} <span class="count">${items.length}</span></h3>
+          </div>`;
+        items.forEach(p => { html += projectCard(p, counter++); });
+      });
+    } else {
+      const list = projects.filter(p => p.category.includes(filter));
+      list.forEach((p,i) => { html += projectCard(p, i); });
+    }
 
-                <!-- ============================================================ -->
-                <!-- Tab 3: QR Menus / Restaurants -->
-                <!-- ============================================================ -->
-                <div id="qr-tab" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    grid.innerHTML = html;
+    if(window.applyTranslations) window.applyTranslations();
+  }
 
-                    <!-- O'Saveur -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop"
-                                alt="OSaveur left"
-                                class="object-cover"
-                            >
-                            <div class="divider"></div>
-                            <img
-                                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop"
-                                alt="OSaveur right"
-                                class="object-cover"
-                            >
-                            <div class="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Restaurant</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">O'Saveur Food</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Interactive digital menu with QR code access. Elegant layout optimized for mobile dining experience.</p>
-                            <a href="https://osaveur-13.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  filterButtons.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      filterButtons.forEach(b=>{
+        b.classList.remove("active", "btn-dark");
+        b.classList.add("btn-outline-dark");
+      });
+      btn.classList.add("active", "btn-dark");
+      btn.classList.remove("btn-outline-dark");
+      renderProjects(btn.dataset.filter);
+    });
+  });
 
-                    <!-- Warska Café -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop"
-                                alt="Warska left"
-                                class="object-cover"
-                            >
-                            <div class="divider"></div>
-                            <img
-                                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop"
-                                alt="Warska right"
-                                class="object-cover"
-                            >
-                            <div class="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Café</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Warska Café</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Multi-language café website (AR/FR/EN) with RTL support, auto language detection, and dark coffee-bean aesthetic.</p>
-                            <a href="https://warska.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  renderProjects("all");
 
-                    <!-- Menu Exemple (Demo) -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img
-                                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop"
-                                alt="Menu demo left"
-                                class="object-cover"
-                            >
-                            <div class="divider"></div>
-                            <img
-                                src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop"
-                                alt="Menu demo right"
-                                class="object-cover"
-                            >
-                            <div class="absolute top-3 right-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Demo</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Digital Menu — Demo</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Live demo of the restaurant digital menu SaaS. Showcases the full feature set available to clients.</p>
-                            <a href="https://menu-exemple.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  // ===== FIX: "View my work" scrolls to the work section =====
+  document.getElementById("viewWorkBtn").addEventListener("click", () => {
+    document.getElementById("work").scrollIntoView({ behavior: "smooth" });
+  });
 
-                </div>
+  // ===== FIX: Mobile menu — custom toggle, stable, no white-flicker =====
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileNav = document.getElementById("mobileNav");
+  const menuIcon = document.getElementById("menuIcon");
 
-                <!-- Tab 4: Medical -->
-                <div id="med-tab" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = mobileNav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    menuIcon.className = open ? "fa-solid fa-xmark" : "fa-solid fa-bars";
+  });
 
-                    <!-- Oftaloo Clinic -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop" alt="Oftaloo left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=800&auto=format&fit=crop" alt="Oftaloo right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Ophtalmologie</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Oftaloo Clinic</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Site de génération de leads pour une clinique ophtalmologique, axé sur la prise de rendez-vous et la conversion.</p>
-                            <a href="https://mohamedbadye.github.io/Oftaloo/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  document.querySelectorAll("#mobileNav a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("open");
+      menuIcon.className = "fa-solid fa-bars";
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
 
-                    <!-- Medcinexo Hospital V5 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.pexels.com/photos/7579827/pexels-photo-7579827.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Medcinexo V5 left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop" alt="Medcinexo V5 right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Dashboard</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Medcinexo Hospital V5</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Dashboard d'administration hospitalière complet visualisant les données patients et l'allocation du personnel.</p>
-                            <a href="https://medcinexo05.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  document.addEventListener("click", (e) => {
+    if(mobileNav.classList.contains("open") && !mobileNav.contains(e.target) && !menuBtn.contains(e.target)){
+      mobileNav.classList.remove("open");
+      menuIcon.className = "fa-solid fa-bars";
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
 
-                    <!-- Medcinexo Pharm V6 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=800&auto=format&fit=crop" alt="Pharm left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=800&auto=format&fit=crop" alt="Pharm right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Pharmacie</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Medcinexo Pharm V6</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Système de gestion des stocks de pharmacie pour suivre les niveaux de stock, les dates d'expiration et les ventes.</p>
-                            <a href="https://medcinexo06.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  // ===== Stats counter animation =====
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || (target > 10 ? "+" : "");
+      const duration = 1100;
+      const start = performance.now();
+      function tick(now){
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(target * eased) + (t === 1 ? suffix : "");
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      statsObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
 
-                    <!-- Medcinexo Dental V4 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=800&auto=format&fit=crop" alt="Dental left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?q=80&w=800&auto=format&fit=crop" alt="Dental right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Dentaire</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Medcinexo Dental V4</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Template spécialisé pour cabinets dentaires avec gestion des rendez-vous et interface patient dédiée.</p>
-                            <a href="https://medcinexo04.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  document.querySelectorAll(".stat-box .num").forEach(el => statsObserver.observe(el));
 
-                    <!-- Medcinexo Labs V7 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=800&auto=format&fit=crop" alt="Labs left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=800&auto=format&fit=crop" alt="Labs right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-violet-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Laboratoire</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Medcinexo Labs V7</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Résultats de laboratoire et planning des tests avec interface épurée pour la gestion des analyses médicales.</p>
-                            <a href="https://medcinexo07.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  // Language Switcher
+  function setLanguage(lang){
+    if(window.setPortfolioLanguage) window.setPortfolioLanguage(lang);
+    // refresh grouped headings if "all" filter is active
+    const active = document.querySelector(".filter-btn.active");
+    if(active && active.dataset.filter === "all") renderProjects("all");
+  }
 
-                    <!-- Medcinexo Care V3 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=800&auto=format&fit=crop" alt="Care left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?q=80&w=800&auto=format&fit=crop" alt="Care right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Portail Patient</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Medcinexo Care V3</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Portail patient avec interface propre et intuitive pour le suivi des soins et l'accès aux informations médicales.</p>
-                            <a href="https://medcinexo03.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
+  const langSelect = document.getElementById("langSelect");
+  const langSelectMobile = document.getElementById("langSelectMobile");
 
-                    <!-- Medcinexo Clinic V2 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="Clinic left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=800&auto=format&fit=crop" alt="Clinic right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Réservation</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Medcinexo Clinic V2</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Système avancé de réservation en ligne pour cliniques avec logique de gestion des créneaux horaires.</p>
-                            <a href="https://medcinexo02.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Medcinexo Pro V1 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=800&auto=format&fit=crop" alt="Pro V1 left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?q=80&w=800&auto=format&fit=crop" alt="Pro V1 right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-slate-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">v1.0</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Medcinexo Pro V1</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Concept initial de l'interface médicale. Première itération du tableau de bord de gestion de santé.</p>
-                            <a href="https://medcinexo01.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Tab 5: Other — Landing Pages & Tools -->
-                <div id="other-tab" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <!-- PagShop E-Commerce Landing -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1472851294608-415105022052?q=80&w=800&auto=format&fit=crop" alt="PagShop left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800&auto=format&fit=crop" alt="PagShop right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Landing Page</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">PagShop — E-Commerce</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Page produit haute conversion conçue pour maximiser les ventes avec des signaux de confiance stratégiques.</p>
-                            <a href="https://pagshop.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Social Bio Link V1 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Bio V1 left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop" alt="Bio V1 right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Bio Link</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Social Bio Link V1</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Page landing mobile-first élégante pour créateurs afin de centraliser toute leur présence sur les réseaux sociaux.</p>
-                            <a href="https://pagland.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Agency Bio Link V2 -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="Bio V2 left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Bio V2 right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-slate-700 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Agence</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Agency Bio Link V2</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Layout alternatif pour agences avec QR codes intégrés et accès rapide aux contacts et services.</p>
-                            <a href="https://pagland1.netlify.app" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Hirafiyin Platform -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800&auto=format&fit=crop" alt="Hirafiyin left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Hirafiyin right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-amber-700 text-white text-xs font-bold px-3 py-1 rounded-full z-10">SaaS</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Hirafiyin Platform</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Plateforme connectant artisans qualifiés et clients. Gestion des profils, logique de réservation et filtres avancés.</p>
-                            <a href="https://hirafiyin.netlify.app/" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Ecrii Editor -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop" alt="Ecrii left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format&fit=crop" alt="Ecrii right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-neutral-800 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Outil SaaS</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Ecrii Editor</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Outil SaaS d'écriture sans distraction avec persistance locale et interface minimaliste pour la productivité.</p>
-                            <a href="https://ecrii.netlify.app" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- SkyCast Engine -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1504608524841-42584120d693?q=80&w=800&auto=format&fit=crop" alt="SkyCast left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=800&auto=format&fit=crop" alt="SkyCast right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">API / Data</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">SkyCast Engine</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Visualisation de données météo en temps réel via API. Requêtes asynchrones et interface dynamique réactive.</p>
-                            <a href="https://wethar.netlify.app" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Logic Picker -->
-                    <div class="project-card bg-white rounded-2xl overflow-hidden flex flex-col h-full group">
-                        <div class="dual-img-wrap relative">
-                            <img src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?q=80&w=800&auto=format&fit=crop" alt="Picker left" class="object-cover">
-                            <div class="divider"></div>
-                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Picker right" class="object-cover">
-                            <div class="absolute top-3 right-3 bg-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">Utilitaire JS</div>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold mb-2 text-slate-900 font-heading">Logic Picker</h3>
-                            <p class="text-slate-500 text-sm mb-6 flex-grow">Utilitaire JavaScript pour la prise de décision aléatoire. Démontre la manipulation avancée des tableaux et arrays.</p>
-                            <a href="https://prorandompicker.netlify.app" target="_blank" class="w-full text-center py-2.5 rounded-lg text-sm font-bold border border-orange-200 text-orange-600 hover:bg-orange-50 transition" data-i18n="btn_view">View Project</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- About Me / Approach Section -->
-        <section id="about" class="py-20 bg-slate-50 border-y border-slate-200">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <!-- Text Area -->
-                    <div>
-                        <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 font-heading" data-i18n="about_title">Who am I?</h2>
-                        <p class="text-slate-600 mb-6 leading-relaxed text-lg" data-i18n="about_desc1">
-                            I am Badye, a dedicated Web Developer. I don't just write code; I focus on creating digital solutions that help businesses grow, streamline their operations, and attract more clients.
-                        </p>
-                        <p class="text-slate-600 mb-8 leading-relaxed" data-i18n="about_desc2">
-                            Whether you need a simple corporate landing page, a full-scale e-commerce store, or an interactive tool for your restaurant, I ensure the final product is fast, secure, and visually stunning.
-                        </p>
-                        
-                        <!-- Mini Value Cards -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                                <i class="fas fa-bolt text-2xl text-orange-500 mb-3"></i>
-                                <h4 class="font-bold text-slate-900 mb-1" data-i18n="val1_title">Fast Performance</h4>
-                                <p class="text-xs text-slate-500" data-i18n="val1_desc">Optimized code for blazing fast loading speeds.</p>
-                            </div>
-                            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                                <i class="fas fa-mobile-screen text-2xl text-rose-500 mb-3"></i>
-                                <h4 class="font-bold text-slate-900 mb-1" data-i18n="val2_title">Responsive Design</h4>
-                                <p class="text-xs text-slate-500" data-i18n="val2_desc">Looks perfect on mobiles, tablets, and desktops.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Visual Area -->
-                    <div class="relative">
-                        <div class="aspect-square rounded-full warm-gradient opacity-10 absolute -inset-4 blur-2xl"></div>
-                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000&auto=format&fit=crop" alt="Coding Approach" class="rounded-2xl shadow-2xl relative z-10 border-4 border-white">
-                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl z-20 border border-slate-100 flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-500 text-xl">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold text-slate-900" data-i18n="badge_quality">Quality Assured</p>
-                                <p class="text-xs text-slate-500" data-i18n="badge_sub">Modern Tech Stack</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-24 bg-white relative overflow-hidden">
-            <!-- Decorative circle -->
-            <div class="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-bl-full -z-10"></div>
-
-            <div class="container mx-auto px-6 max-w-2xl text-center">
-                <i class="far fa-comments text-5xl text-orange-500 mb-6"></i>
-                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4 font-heading" data-i18n="contact_title">Have any questions?</h2>
-                <p class="text-slate-500 mb-8 text-lg" data-i18n="contact_sub">Whether you want to discuss a potential project, ask about pricing, or just say hello, I'm always happy to chat!</p>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="mailto:your.email@example.com" class="inline-flex items-center justify-center warm-gradient text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-orange-500/40 hover:-translate-y-1 transition-all text-lg">
-                        <i class="fas fa-envelope mr-2"></i> <span data-i18n="btn_email">Send me an Email</span>
-                    </a>
-                    <a href="https://wa.me/213775792838" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-green-500/40 hover:-translate-y-1 transition-all text-lg">
-                        <i class="fab fa-whatsapp mr-2 text-xl"></i> WhatsApp
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm border-t-4 border-orange-500">
-        <p data-i18n="footer">© 2026 Badye. Dev. All rights reserved.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Translations Logic
-        const translations = {
-            en: {
-                nav_projects: "Portfolio", nav_about: "About", nav_contact: "Got Questions?",
-                hero_badge: "Web Developer & Designer",
-                hero_h1_1: "Crafting Digital", hero_h1_2: "Experiences That Sell.",
-                hero_desc: "Specialized in building high-converting e-commerce, elegant corporate websites, and smart digital solutions for modern businesses.",
-                btn_work: "View Portfolio", btn_ask: "Ask a Question",
-                
-                sec_title: "Selected Works", swipe_hint: "Swipe for more categories",
-                tab_corp: "Companies", tab_ecom: "E-Commerce", tab_qr: "QR Menus", tab_med: "Medical", tab_other: "Landing & Other",
-                coming_soon: "Projects are being added soon...", btn_view: "View Project",
-                
-                about_title: "Who am I?", 
-                about_desc1: "I am Badye, a dedicated Web Developer. I don't just write code; I focus on creating digital solutions that help businesses grow, streamline their operations, and attract more clients.",
-                about_desc2: "Whether you need a simple corporate landing page, a full-scale e-commerce store, or an interactive tool for your restaurant, I ensure the final product is fast, secure, and visually stunning.",
-                val1_title: "Fast Performance", val1_desc: "Optimized code for blazing fast loading speeds.",
-                val2_title: "Responsive Design", val2_desc: "Looks perfect on mobiles, tablets, and desktops.",
-                badge_quality: "Quality Assured", badge_sub: "Modern Tech Stack",
-                
-                contact_title: "Have any questions?", contact_sub: "Whether you want to discuss a potential project, ask about pricing, or just say hello, I'm always happy to chat!",
-                btn_email: "Send me an Email", footer: "© 2026 Badye. Dev. All rights reserved."
-            },
-            fr: {
-                nav_projects: "Portfolio", nav_about: "À Propos", nav_contact: "Des Questions ?",
-                hero_badge: "Développeur & Web Designer",
-                hero_h1_1: "Création d'Expériences", hero_h1_2: "Numériques qui Vendent.",
-                hero_desc: "Spécialisé dans la création de sites e-commerce performants, de sites vitrines élégants et de solutions digitales intelligentes.",
-                btn_work: "Voir le Portfolio", btn_ask: "Poser une question",
-                
-                sec_title: "Réalisations", swipe_hint: "Glissez pour plus de catégories",
-                tab_corp: "Entreprises", tab_ecom: "E-Commerce", tab_qr: "Menus QR", tab_med: "Médical", tab_other: "Landing & Autres",
-                coming_soon: "Les projets seront ajoutés bientôt...", btn_view: "Voir le Projet",
-                
-                about_title: "Qui suis-je ?", 
-                about_desc1: "Je suis Badye, un Développeur Web passionné. Je ne me contente pas d'écrire du code ; je crée des solutions numériques qui aident les entreprises à se développer et à attirer plus de clients.",
-                about_desc2: "Que vous ayez besoin d'un simple site vitrine, d'une boutique e-commerce complète ou d'un outil interactif pour votre restaurant, je m'assure que le produit final est rapide, sécurisé et visuellement attrayant.",
-                val1_title: "Performance Rapide", val1_desc: "Code optimisé pour des vitesses de chargement fulgurantes.",
-                val2_title: "Design Adaptatif", val2_desc: "Parfait sur mobiles, tablettes et ordinateurs.",
-                badge_quality: "Qualité Assurée", badge_sub: "Technologies Modernes",
-
-                contact_title: "Vous avez des questions ?", contact_sub: "Que vous souhaitiez discuter d'un projet, vous renseigner sur les prix ou simplement dire bonjour, je suis toujours ravi d'échanger !",
-                btn_email: "M'envoyer un Email", footer: "© 2026 Badye. Dev. Tous droits réservés."
-            }
-        };
-
-        let currentLang = 'en';
-        document.getElementById('lang-toggle').addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'fr' : 'en';
-            document.getElementById('current-lang').textContent = currentLang.toUpperCase();
-            
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
-            });
-        });
-
-        // Tabs Logic
-        function openTab(evt, tabName) {
-            const tabContents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-                tabContents[i].style.display = "none";
-            }
-            const tabLinks = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
-            }
-            const selectedTab = document.getElementById(tabName);
-            selectedTab.style.display = "grid";
-            setTimeout(() => selectedTab.classList.add("active"), 10);
-            evt.currentTarget.classList.add("active");
-        }
-    </script>
+  if(langSelect) langSelect.addEventListener("change", e => setLanguage(e.target.value));
+  if(langSelectMobile) langSelectMobile.addEventListener("change", e => {
+    if(langSelect) langSelect.value = e.target.value;
+    setLanguage(e.target.value);
+  });
+</script>
 </body>
 </html>
