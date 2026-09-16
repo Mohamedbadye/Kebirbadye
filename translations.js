@@ -13,7 +13,7 @@ const portfolioTranslations = {
     hero_title: "Need a website or web app? I build it from idea to deployment.",
 
     hero_desc:
-      "I build modern websites, web platforms and SaaS products, integrate APIs and AI, and automate the systems behind them.",
+      "I'm a Jamstack & serverless developer — I build modern websites, SaaS products and AI-powered apps, and automate the systems behind them, from idea to deployment.",
 
     hero_toggle_hire: "I need a developer",
     hero_toggle_work: "View my work",
@@ -32,7 +32,7 @@ const portfolioTranslations = {
       "From a simple website to a complete web product.",
 
     services_intro:
-      "I handle both the interface and the systems behind it — frontend, backend, databases, APIs, cloud services, AI and automation.",
+      "I handle both the interface and the systems behind it — frontend, backend, databases, APIs, serverless infrastructure, AI and automation.",
 
     svc_static_title: "Websites & Landing Pages",
     svc_platform_title: "Platforms & Web Apps",
@@ -76,6 +76,17 @@ const portfolioTranslations = {
 
     featured_btn: "Open InvoiceFlowly →",
 
+    featured2_title: "DZ-Mouadal reached 150K+ search impressions with zero ad spend.",
+
+    featured2_desc:
+      "A free GPA/average calculator for Algerian university students, grown entirely through organic search and community seeding in Facebook and Telegram groups. Now evolving into a freemium product with retake guidance, result sharing and paid exam packs.",
+
+    featured2_btn: "Open DZ-Mouadal →",
+
+    featured2_stat1_lbl: "Search clicks",
+    featured2_stat2_lbl: "Search impressions",
+    featured2_highlight: "Grown organically through Algerian student communities — zero ad spend",
+
     about_label: "About",
 
     about_title:
@@ -85,7 +96,7 @@ const portfolioTranslations = {
       "I work across the frontend and the systems behind it — authentication, databases, APIs, cloud services, third-party integrations and automation.",
 
     about_desc2:
-      "My main focus is building practical web products that are fast, maintainable and ready to deploy, without adding unnecessary complexity.",
+      "My main focus is Jamstack and serverless architecture — micro-SaaS products, AI integration and automation — with a practical, bootstrapped approach to shipping and keeping the architecture simple where possible.",
 
     stack_label: "Stack & tools",
 
@@ -120,7 +131,7 @@ const portfolioTranslations = {
       "Besoin d'un site ou d'une application web ? Je le construis de l'idée au déploiement.",
 
     hero_desc:
-      "Je crée des sites web modernes, des plateformes et des produits SaaS, avec intégration d'APIs, d'IA et d'automatisations.",
+      "Je suis développeur Jamstack & serverless — je crée des sites web modernes, des produits SaaS et des applications propulsées par l'IA, et j'automatise les systèmes derrière, de l'idée au déploiement.",
 
     hero_toggle_hire: "J'ai besoin d'un développeur",
     hero_toggle_work: "Voir mes réalisations",
@@ -139,7 +150,7 @@ const portfolioTranslations = {
       "D'un simple site à un produit web complet.",
 
     services_intro:
-      "Je prends en charge l'interface et les systèmes qui se trouvent derrière : frontend, backend, bases de données, APIs, cloud, IA et automatisation.",
+      "Je prends en charge l'interface et les systèmes qui se trouvent derrière : frontend, backend, bases de données, APIs, infrastructure serverless, IA et automatisation.",
 
     svc_static_title: "Sites Web & Landing Pages",
     svc_platform_title: "Plateformes & Applications Web",
@@ -183,6 +194,17 @@ const portfolioTranslations = {
 
     featured_btn: "Ouvrir InvoiceFlowly →",
 
+    featured2_title: "DZ-Mouadal a atteint 150K+ impressions de recherche sans budget pub.",
+
+    featured2_desc:
+      "Une calculatrice de moyenne gratuite pour les étudiants algériens, développée entièrement via le référencement organique et les groupes Facebook et Telegram. Elle évolue aujourd'hui vers un produit freemium avec accompagnement au rattrapage, partage de résultats et packs d'examens payants.",
+
+    featured2_btn: "Ouvrir DZ-Mouadal →",
+
+    featured2_stat1_lbl: "Clics de recherche",
+    featured2_stat2_lbl: "Impressions de recherche",
+    featured2_highlight: "Croissance organique via les communautés étudiantes algériennes — sans budget pub",
+
     about_label: "À propos",
 
     about_title:
@@ -192,7 +214,7 @@ const portfolioTranslations = {
       "Je travaille aussi bien sur le frontend que sur les systèmes qui se trouvent derrière : authentification, bases de données, APIs, services cloud, intégrations et automatisation.",
 
     about_desc2:
-      "Mon objectif est de construire des produits web pratiques, rapides et maintenables, prêts à être déployés, sans ajouter de complexité inutile.",
+      "Mon axe principal est l'architecture Jamstack et serverless — micro-SaaS, intégration IA et automatisation — avec une approche pratique et bootstrappée, en gardant l'architecture simple autant que possible.",
 
     stack_label: "Stack & outils",
 
@@ -227,7 +249,7 @@ const portfolioTranslations = {
       "تحتاج إلى موقع أو تطبيق ويب؟ أبنيه لك من الفكرة إلى الإطلاق.",
 
     hero_desc:
-      "أطور مواقع حديثة، منصات وتطبيقات SaaS، مع دمج APIs والذكاء الاصطناعي وبناء أنظمة الأتمتة.",
+      "أنا مطور Jamstack وServerless — أبني مواقع حديثة، منتجات SaaS وتطبيقات مدعومة بالذكاء الاصطناعي، وأؤتمت الأنظمة التي تقف خلفها، من الفكرة إلى الإطلاق.",
 
     hero_toggle_hire: "أحتاج إلى مطور",
     hero_toggle_work: "شاهد أعمالي",
@@ -246,7 +268,7 @@ const portfolioTranslations = {
       "من موقع بسيط إلى منتج ويب متكامل.",
 
     services_intro:
-      "أعمل على الواجهة والأنظمة التي تقف خلفها — Frontend، Backend، قواعد البيانات، APIs، الخدمات السحابية، الذكاء الاصطناعي والأتمتة.",
+      "أعمل على الواجهة والأنظمة التي تقف خلفها — Frontend، Backend، قواعد البيانات، APIs، البنية التحتية Serverless، الذكاء الاصطناعي والأتمتة.",
 
     svc_static_title: "المواقع وLanding Pages",
     svc_platform_title: "المنصات وتطبيقات الويب",
@@ -290,6 +312,17 @@ const portfolioTranslations = {
 
     featured_btn: "فتح InvoiceFlowly ←",
 
+    featured2_title: "DZ-Mouadal تجاوز 150 ألف ظهور في نتائج البحث بدون أي إنفاق إعلاني.",
+
+    featured2_desc:
+      "حاسبة معدل مجانية لطلبة الجامعات الجزائرية، نمت بالكامل عبر تحسين محركات البحث (SEO) والتواجد في مجموعات فيسبوك وتيليغرام الطلابية. يتطور المشروع الآن إلى منتج Freemium يشمل توجيه الطلبة نحو المواد المعادة، مشاركة النتائج، وحزم امتحانات مدفوعة.",
+
+    featured2_btn: "فتح DZ-Mouadal ←",
+
+    featured2_stat1_lbl: "نقرات من البحث",
+    featured2_stat2_lbl: "ظهور في نتائج البحث",
+    featured2_highlight: "نمو عضوي عبر المجتمعات الطلابية الجزائرية — بدون إنفاق إعلاني",
+
     about_label: "من أنا",
 
     about_title:
@@ -299,7 +332,7 @@ const portfolioTranslations = {
       "أعمل على الواجهة الأمامية والأنظمة التي تقف خلفها، مثل المصادقة، قواعد البيانات، APIs، الخدمات السحابية، التكاملات والأتمتة.",
 
     about_desc2:
-      "أركز على بناء منتجات ويب عملية وسريعة وقابلة للصيانة وجاهزة للنشر، مع تجنب التعقيد غير الضروري.",
+      "أركز أساسًا على بنية Jamstack وServerless — منتجات Micro-SaaS، دمج الذكاء الاصطناعي والأتمتة — بأسلوب عملي وBootstrapped، مع الحفاظ على بساطة البنية التقنية قدر الإمكان.",
 
     stack_label: "التقنيات والأدوات",
 
