@@ -7,11 +7,9 @@
   <meta name="theme-color" content="#ffffff">
   <title>Badye — Jamstack &amp; Serverless Developer | SaaS, AI &amp; Automation</title>
 
-  <!-- Bootstrap + Tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Icons + Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,15 +32,12 @@
     a{text-decoration:none}
     .container-xl{max-width:1240px}
 
-    /* Offset anchors below the fixed header */
     section[id]{scroll-margin-top:84px}
 
-    /* Upwork Style Header */
     .nav-shell{border-bottom:1px solid var(--line);background:rgba(255,255,255,.94);backdrop-filter:blur(14px)}
     .brand{font:700 1.55rem "Space Grotesk";letter-spacing:-.07em;color:#111}
     .brand span{color:var(--green)}
 
-    /* Hero Section */
     .hero {
       position: relative;
       background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop') center/cover;
@@ -59,7 +54,6 @@
       position: relative;
       z-index: 2;
       color: white;
-      /* FIX: give content space under the fixed navbar */
       padding-top: 110px;
       padding-bottom: 60px;
       width: 100%;
@@ -76,8 +70,18 @@
       color: #d1d5db;
       max-width: 600px;
     }
+    .hero-badge{
+      display:inline-block;
+      background:rgba(14,165,233,.15);
+      border:1px solid rgba(125,211,252,.45);
+      color:#7dd3fc;
+      padding:6px 14px;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
 
-    /* Toggle & Search */
     .toggle-pill {
       background: rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.2);
@@ -134,11 +138,8 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .search-container button:hover {
-      background: var(--green-dark);
-    }
+    .search-container button:hover { background: var(--green-dark); }
 
-    /* Category Grid */
     .category-card {
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -169,7 +170,6 @@
       align-self: flex-end;
     }
 
-    /* How it works dark card */
     .how-card {
       background: #0d0e12;
       border-radius: 24px;
@@ -186,12 +186,12 @@
       box-shadow: 0 0 40px rgba(14, 165, 233, 0.6), inset 0 0 20px rgba(255,255,255,0.2);
     }
 
-    /* Work group headings */
     .work-group-title{
       font:700 1.05rem "Space Grotesk";
       letter-spacing:-.02em;
       display:flex;align-items:center;gap:12px;
       color:var(--ink);
+      margin-top:14px;
     }
     .work-group-title .count{
       background:#e0f2fe;color:var(--green-dark);
@@ -201,18 +201,15 @@
       content:"";flex:1;height:1px;background:var(--line);
     }
 
-    /* Service Cards */
     .service-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff;height:100%;transition:.25s}
     .service-card:hover{transform:translateY(-5px);box-shadow:0 18px 45px rgba(0,0,0,.07);border-color:#bae6fd}
     .service-icon{width:46px;height:46px;border-radius:14px;background:#e0f2fe;color:var(--green);display:grid;place-items:center;font-size:1.1rem;margin-bottom:24px}
 
-    /* Stats */
     .stat-box{border:1px solid var(--line);border-radius:20px;padding:26px 20px;background:#fff;text-align:center;height:100%;transition:.25s}
     .stat-box:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(0,0,0,.06);border-color:#bae6fd}
     .stat-box .num{font:700 2.2rem "Space Grotesk";letter-spacing:-.03em;color:var(--green-dark)}
     .stat-box .lbl{font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
 
-    /* Work Cards */
     .project-card{border:1px solid var(--line);border-radius:26px;overflow:hidden;background:#fff;height:100%;transition:.28s}
     .project-card:hover{transform:translateY(-6px);box-shadow:0 22px 55px rgba(0,0,0,.09)}
     .project-visual{height:230px;position:relative;overflow:hidden;background:#111}
@@ -225,20 +222,17 @@
     .project-tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 20px}
     .project-tags span{background:#f4f4f1;border-radius:999px;padding:5px 8px;font-size:.67rem;font-weight:700;color:#56585e}
 
-    /* Buttons */
     .btn-green{background:var(--green);color:#fff;border:1px solid var(--green);font-weight:700}
     .btn-green:hover{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
     .btn-darkline{border:1.5px solid #171717;color:#171717;font-weight:700;background:#fff}
     .btn-darkline:hover{background:#111;color:#fff}
 
-    /* RTL Fixes */
     [dir="rtl"] .hero h1,[dir="rtl"] .section-title{letter-spacing:-.04em}
     [dir="rtl"] .project-type{left:auto;right:15px}
     [dir="rtl"] .project-number{right:auto;left:16px}
     [dir="rtl"] .search-container button { right: auto; left: 8px; }
     [dir="rtl"] .search-container input { padding-right: 24px; padding-left: 60px; }
 
-    /* ===== FIX: Mobile navigation — no flicker, always readable ===== */
     #mobileNav{
       position:absolute;
       top:100%;
@@ -254,7 +248,7 @@
     }
     #mobileNav.open{display:block}
     #mobileNav a{
-      color:#111 !important;              /* never white */
+      color:#111 !important;
       opacity:0;
       transform:translateY(-8px);
       animation:navItemIn .28s ease forwards;
@@ -265,7 +259,6 @@
     #mobileNav a:nth-child(4){animation-delay:.20s}
     @keyframes navItemIn{to{opacity:1;transform:translateY(0)}}
 
-    /* Cleaner language picker */
     .lang-select{
       appearance:none;
       -webkit-appearance:none;
@@ -294,7 +287,6 @@
     }
 
     .section-label{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
-    /* organized project boxes: equal heights, aligned content */
     #projectsGrid>[class*="col"]{display:flex}
     .project-card{display:flex;flex-direction:column}
     .project-body{display:flex;flex-direction:column;flex:1}
@@ -331,7 +323,6 @@
     </div>
   </nav>
 
-  <!-- Mobile Nav (custom toggle, no flicker) -->
   <div id="mobileNav">
     <div class="container px-4 py-4 d-flex flex-column gap-1">
       <a class="nav-link-custom fw-semibold py-2 border-bottom" href="#services" data-i18n="nav_services">Services</a>
@@ -347,31 +338,38 @@
   <section id="home" class="hero">
     <div class="hero-overlay"></div>
     <div class="container-xl mx-auto px-4 hero-content">
+      <div class="hero-badge mb-3" data-i18n="hero_badge">Web Developer · AI · APIs · Automation</div>
       <h1 data-i18n="hero_title">Need a website or web app? I build it from idea to deployment.</h1>
       <p class="mt-4 mb-5" data-i18n="hero_desc">I'm a Jamstack &amp; serverless developer — I build modern websites, SaaS products and AI-powered apps, and automate the systems behind them, from idea to deployment.</p>
 
-      <!-- Toggle -->
-      <div class="toggle-pill mb-4">
-        <button class="active" data-i18n="hero_toggle_hire">I need a developer</button>
+      <div class="toggle-pill mb-4" id="heroToggle">
+        <button class="active" id="hireBtn" data-i18n="hero_toggle_hire">I need a developer</button>
         <button class="inactive" id="viewWorkBtn" data-i18n="hero_toggle_work">View my work</button>
       </div>
 
-      <!-- Search -->
       <div class="search-container">
         <input type="text" placeholder="What do you need to build?" data-i18n="hero_search" id="searchInput">
         <button type="button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
 
-      <!-- Quick Links -->
       <div class="d-flex gap-2 mt-4 flex-wrap">
-        <a href="#services" class="badge bg-transparent border border-white text-white rounded-pill px-3 py-2 fw-normal" data-i18n="hero_tag_1">Websites &amp; Web Apps <i class="fa-solid fa-arrow-right ms-1"></i></a>
-        <a href="#services" class="badge bg-transparent border border-white text-white rounded-pill px-3 py-2 fw-normal" data-i18n="hero_tag_2">AI Integration <i class="fa-solid fa-arrow-right ms-1"></i></a>
-        <a href="#services" class="badge bg-transparent border border-white rounded-pill px-3 py-2 fw-normal" data-i18n="hero_tag_3">APIs &amp; Automation <i class="fa-solid fa-arrow-right ms-1"></i></a>
+        <a href="#services" class="badge bg-transparent border border-white text-white rounded-pill px-3 py-2 fw-normal">
+          <span data-i18n="hero_tag_1">Websites &amp; Web Apps</span>
+          <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+        <a href="#services" class="badge bg-transparent border border-white text-white rounded-pill px-3 py-2 fw-normal">
+          <span data-i18n="hero_tag_2">AI Integration</span>
+          <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+        <a href="#services" class="badge bg-transparent border border-white text-white rounded-pill px-3 py-2 fw-normal">
+          <span data-i18n="hero_tag_3">APIs &amp; Automation</span>
+          <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Trusted By / Proof Strip -->
+  <!-- Trusted By / Tech Strip -->
   <div class="py-4 bg-light border-bottom">
     <div class="container-xl mx-auto px-4">
       <p class="text-center text-muted small fw-bold mb-3 text-uppercase tracking-wider" data-i18n="trusted_by">Built with modern web technologies</p>
@@ -382,56 +380,54 @@
         <span style="font:800 1.05rem 'Space Grotesk'">Mistral AI</span>
         <span style="font:700 1.15rem 'Instrument Serif'">Lemon Squeezy</span>
         <span style="font:700 1rem 'DM Sans'">n8n</span>
+        <span style="font:700 1.05rem 'Space Grotesk'">Google Cloud</span>
+        <span style="font:600 1.05rem 'DM Sans';letter-spacing:.02em">Azure OpenAI</span>
+        <span style="font:800 1.05rem 'Space Grotesk'">DeepSeek</span>
+        <span style="font:italic 700 1.15rem 'Instrument Serif'">Claude API</span>
       </div>
     </div>
   </div>
 
-  <!-- Services / Category Grid -->
+  <!-- Services -->
   <section id="services" class="py-5 bg-white">
     <div class="container-xl mx-auto px-4">
       <div class="mb-5">
         <div class="section-label mb-3" data-i18n="services_label">What I build</div>
-        <h2 class="section-title fw-bold mb-3" data-i18n="services_title">From a landing page to a connected product.</h2>
-        <p class="text-muted" data-i18n="services_intro">My work sits between frontend development, backend services, APIs, serverless infrastructure and AI.</p>
+        <h2 class="section-title fw-bold mb-3" data-i18n="services_title">From a simple website to a complete web product.</h2>
+        <p class="text-muted" data-i18n="services_intro">I handle both the interface and the systems behind it — frontend, backend, databases, APIs, serverless infrastructure, AI and automation.</p>
       </div>
 
       <div class="row g-3">
-        <!-- Category Card 1 -->
         <div class="col-6 col-md-4 col-lg-3">
           <div class="category-card">
-            <span class="fw-bold text-dark" data-i18n="svc_static_title">Static & Business Websites</span>
+            <span class="fw-bold text-dark" data-i18n="svc_static_title">Websites &amp; Landing Pages</span>
             <div class="icon-wrap"><i class="fa-solid fa-window-maximize"></i></div>
           </div>
         </div>
-        <!-- Category Card 2 -->
         <div class="col-6 col-md-4 col-lg-3">
           <div class="category-card">
-            <span class="fw-bold text-dark" data-i18n="svc_platform_title">Platforms & Web Apps</span>
+            <span class="fw-bold text-dark" data-i18n="svc_platform_title">Platforms &amp; Web Apps</span>
             <div class="icon-wrap"><i class="fa-solid fa-layer-group"></i></div>
           </div>
         </div>
-        <!-- Category Card 3 -->
         <div class="col-6 col-md-4 col-lg-3">
           <div class="category-card">
             <span class="fw-bold text-dark" data-i18n="svc_saas_title">SaaS Products</span>
             <div class="icon-wrap"><i class="fa-solid fa-cube"></i></div>
           </div>
         </div>
-        <!-- Category Card 4 -->
         <div class="col-6 col-md-4 col-lg-3">
           <div class="category-card">
             <span class="fw-bold text-dark" data-i18n="svc_ai_title">AI Integration</span>
             <div class="icon-wrap"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
           </div>
         </div>
-        <!-- Category Card 5 -->
         <div class="col-6 col-md-4 col-lg-3">
           <div class="category-card">
-            <span class="fw-bold text-dark" data-i18n="svc_api_title">APIs & Integrations</span>
+            <span class="fw-bold text-dark" data-i18n="svc_api_title">APIs &amp; Integrations</span>
             <div class="icon-wrap"><i class="fa-solid fa-plug"></i></div>
           </div>
         </div>
-        <!-- Category Card 6 -->
         <div class="col-6 col-md-4 col-lg-3">
           <div class="category-card">
             <span class="fw-bold text-dark" data-i18n="svc_auto_title">Automation</span>
@@ -445,11 +441,11 @@
   <!-- How it works -->
   <section class="py-5 bg-light">
     <div class="container-xl mx-auto px-4 text-center">
-      <h2 class="section-title fw-bold mb-4" data-i18n="how_title">How it works</h2>
+      <h2 class="section-title fw-bold mb-4" data-i18n="how_title">From idea to working product</h2>
 
-      <div class="toggle-pill mb-4" style="background:#e5e7eb; border-color:#d1d5db;">
-        <button class="active" style="background:#111; color:#fff;" data-i18n="how_toggle_hire">For clients</button>
-        <button class="inactive" style="color:#4b5563;" data-i18n="how_toggle_work">My process</button>
+      <div class="toggle-pill mb-4" id="howToggle" style="background:#e5e7eb; border-color:#d1d5db;">
+        <button class="active" data-view="client" style="background:#111; color:#fff;" data-i18n="how_toggle_hire">For clients</button>
+        <button class="inactive" data-view="process" style="color:#4b5563;" data-i18n="how_toggle_work">My process</button>
       </div>
 
       <div class="how-card mx-auto" style="max-width: 800px;">
@@ -459,7 +455,7 @@
           <div class="col-6"><div class="glow-circle"></div></div>
           <div class="col-6"><div class="glow-circle"></div></div>
         </div>
-        <p class="text-center text-gray-400 fw-bold fs-4 mb-0" data-i18n="how_card_text">One developer, every layer of your product</p>
+        <p class="text-center text-gray-400 fw-bold fs-4 mb-0" id="howCardText" data-i18n="how_card_text">One developer, every layer of your product</p>
       </div>
     </div>
   </section>
@@ -469,29 +465,29 @@
     <div class="container-xl mx-auto px-4">
       <div class="mb-5">
         <div class="section-label mb-3" data-i18n="work_label">Selected work</div>
-        <h2 class="section-title fw-bold mb-3" data-i18n="work_title">Built across different layers of the web.</h2>
-        <p class="text-muted" data-i18n="work_intro">A mix of client-style websites, full web applications, SaaS experiments and systems where the interface is only one part of the product.</p>
+        <h2 class="section-title fw-bold mb-3" data-i18n="work_title">Real projects across websites, apps, SaaS and integrations.</h2>
+        <p class="text-muted" data-i18n="work_intro">A selection of projects covering business websites, web applications, SaaS products, APIs, AI features and automation systems.</p>
       </div>
 
       <!-- Filters -->
       <div class="d-flex gap-2 overflow-auto pb-3 mb-3" style="scrollbar-width: none;">
         <button class="btn btn-dark rounded-pill px-4 fw-bold filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
-        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="static" data-i18n="filter_static">Static</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="static" data-i18n="filter_static">Websites</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="stores" data-i18n="filter_stores">Stores</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="menu" data-i18n="filter_menu">Menus</button>
         <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="platforms" data-i18n="filter_platforms">Platforms</button>
         <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="saas" data-i18n="filter_saas">SaaS</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="apps" data-i18n="filter_apps">Apps</button>
         <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="automation" data-i18n="filter_automation">Automation</button>
-        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="ai" data-i18n="filter_ai">AI Integration</button>
+        <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="ai" data-i18n="filter_ai">AI</button>
         <button class="btn btn-outline-dark rounded-pill px-4 fw-bold filter-btn" data-filter="api" data-i18n="filter_api">APIs</button>
       </div>
 
-      <!-- Projects Grid -->
-      <div id="projectsGrid" class="row g-4 mt-2">
-        <!-- Rendered via JS -->
-      </div>
+      <div id="projectsGrid" class="row g-4 mt-2"></div>
     </div>
   </section>
 
-  <!-- Featured Product -->
+  <!-- Featured Products -->
   <section class="py-5 bg-light">
     <div class="container-xl mx-auto px-4">
       <div class="bg-dark text-white rounded-4 overflow-hidden shadow-lg mb-4">
@@ -502,9 +498,9 @@
             <p class="text-secondary mb-4" data-i18n="featured2_desc">A free GPA/average calculator for Algerian university students, grown entirely through organic search and community seeding in Facebook and Telegram groups. Now evolving into a freemium product with retake guidance, result sharing and paid exam packs.</p>
             <div class="d-flex flex-wrap gap-2 mb-4">
               <span class="badge bg-secondary rounded-pill px-3 py-2">SEO</span>
-              <span class="badge bg-secondary rounded-pill px-3 py-2">Organic Growth</span>
-              <span class="badge bg-secondary rounded-pill px-3 py-2">Freemium</span>
-              <span class="badge bg-secondary rounded-pill px-3 py-2">EdTech</span>
+              <span class="badge bg-secondary rounded-pill px-3 py-2" data-i18n="badge_organic">Organic Growth</span>
+              <span class="badge bg-secondary rounded-pill px-3 py-2" data-i18n="badge_freemium">Freemium</span>
+              <span class="badge bg-secondary rounded-pill px-3 py-2" data-i18n="badge_edtech">EdTech</span>
             </div>
             <a href="https://dz-mouadal.netlify.app/" target="_blank" rel="noopener" class="btn btn-light rounded-pill px-4 py-3 fw-bold align-self-start" data-i18n="featured2_btn">Open DZ-Mouadal →</a>
           </div>
@@ -517,13 +513,13 @@
               <div class="row g-2 text-center">
                 <div class="col-6">
                   <div class="stat-box" style="border:none;background:#f7f7f4;padding:16px 10px;">
-                    <div class="num" data-count="78" data-suffix="K+">78.3K+</div>
+                    <div class="num" data-count="78.3" data-decimals="1" data-suffix="K+">78.3K+</div>
                     <div class="lbl" data-i18n="featured2_stat1_lbl">Search clicks</div>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="stat-box" style="border:none;background:#f7f7f4;padding:16px 10px;">
-                    <div class="num" data-count="470" data-suffix="K+">479K+</div>
+                    <div class="num" data-count="479" data-suffix="K+">479K+</div>
                     <div class="lbl" data-i18n="featured2_stat2_lbl">Search impressions</div>
                   </div>
                 </div>
@@ -559,10 +555,10 @@
               <div class="bg-secondary bg-opacity-25 rounded-pill mb-4" style="height: 9px; width: 52%;"></div>
               <hr>
               <div class="row g-2 text-center text-muted small">
-                <div class="col-6 bg-light rounded-3 p-3">Client<br><strong class="text-dark">Alex IT</strong></div>
-                <div class="col-6 bg-light rounded-3 p-3">Total<br><strong class="text-dark">$1,250</strong></div>
+                <div class="col-6 bg-light rounded-3 p-3"><span data-i18n="invoice_client">Client</span><br><strong class="text-dark">Alex IT</strong></div>
+                <div class="col-6 bg-light rounded-3 p-3"><span data-i18n="invoice_total">Total</span><br><strong class="text-dark">$1,250</strong></div>
               </div>
-              <div class="mt-3 p-3 rounded-3 text-center small fw-bold" style="background:#e0f2fe;color:#0284c7">AI extracted invoice data + suggested pricing</div>
+              <div class="mt-3 p-3 rounded-3 text-center small fw-bold" style="background:#e0f2fe;color:#0284c7" data-i18n="invoice_ai_note">AI extracted invoice data + suggested pricing</div>
             </div>
           </div>
         </div>
@@ -577,29 +573,28 @@
         <div class="col-lg-6">
           <div class="p-4 border rounded-4 h-100 bg-light">
             <div class="section-label mb-3" data-i18n="about_label">About</div>
-            <h2 class="section-title fw-bold mb-4" data-i18n="about_title">A developer focused on useful systems, not just screens.</h2>
-            <p class="text-muted lh-lg mb-3" data-i18n="about_desc1">I work across the frontend and the infrastructure behind it. That means I can take a project from a clean interface to authentication, databases, APIs, cloud services and automation.</p>
-            <p class="text-muted lh-lg" data-i18n="about_desc2">My strongest focus is Jamstack and serverless architecture — micro-SaaS products, AI integration and automation — with a practical, bootstrapped approach to shipping and keeping the architecture simple where possible.</p>
-            <p class="text-muted lh-lg mb-0"><strong>Languages:</strong> Arabic (native), French (fluent), English (professional). I build multilingual and RTL-ready products, and I work comfortably with international clients.</p>
+            <h2 class="section-title fw-bold mb-4" data-i18n="about_title">A developer who can build beyond the interface.</h2>
+            <p class="text-muted lh-lg mb-3" data-i18n="about_desc1">I work across the frontend and the systems behind it — authentication, databases, APIs, cloud services, third-party integrations and automation.</p>
+            <p class="text-muted lh-lg mb-3" data-i18n="about_desc2">My main focus is Jamstack and serverless architecture — micro-SaaS products, AI integration and automation — with a practical, bootstrapped approach to shipping and keeping the architecture simple where possible.</p>
+            <p class="text-muted lh-lg mb-0" data-i18n="about_langs"><strong>Languages:</strong> Arabic (native), French (fluent), English (professional). I build multilingual and RTL-ready products, and I work comfortably with international clients.</p>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="p-4 border rounded-4 h-100">
-            <div class="section-label mb-3" data-i18n="stack_label">Stack & tools</div>
+            <div class="section-label mb-3" data-i18n="stack_label">Stack &amp; tools</div>
             <ul class="list-unstyled mb-0">
               <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6+), React, responsive &amp; mobile-first UI</span></li>
-              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Backend & data:</strong> Firebase, Supabase, SQL/NoSQL databases, serverless functions, REST APIs</span></li>
-              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Cloud & DevOps:</strong> Cloudflare Workers, D1, KV, R2, Google Cloud, Azure, CI/CD basics</span></li>
-              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>AI:</strong> Mistral AI, Azure AI and external AI APIs — extraction, enrichment, generation</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Backend &amp; data:</strong> Firebase, Supabase, SQL/NoSQL databases, serverless functions, REST APIs</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Cloud &amp; DevOps:</strong> Cloudflare Workers, D1, KV, R2, Google Cloud, Azure, CI/CD basics</span></li>
+              <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>AI:</strong> Mistral AI, Azure OpenAI, DeepSeek, Claude API — extraction, enrichment, generation</span></li>
               <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Automation:</strong> n8n, webhooks, data pipelines, Excel/PDF exports, lead generation flows</span></li>
               <li class="d-flex gap-3 py-3 border-bottom"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Payments:</strong> Lemon Squeezy checkout, subscriptions and product billing flows</span></li>
-              <li class="d-flex gap-3 py-3"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Design & delivery:</strong> Git/GitHub, Figma-to-code, SEO basics, performance, RTL/i18n</span></li>
+              <li class="d-flex gap-3 py-3"><i class="fa-solid fa-check mt-1" style="color:var(--green)"></i><span><strong>Design &amp; delivery:</strong> Git/GitHub, Figma-to-code, SEO basics, performance, RTL/i18n</span></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Stats -->
       <div class="row g-3 mt-2">
         <div class="col-6 col-md-3">
           <div class="stat-box">
@@ -633,10 +628,10 @@
   <section id="contact" class="py-5" style="background: #e0f2fe; border-top: 1px solid #c9e6f7; border-bottom: 1px solid #c9e6f7;">
     <div class="container-xl mx-auto px-4 text-center">
       <div class="section-label mb-3" data-i18n="cta_label">Have a project?</div>
-      <h2 class="display-5 fw-bold mx-auto mb-4" style="max-width: 800px; letter-spacing: -0.04em;" data-i18n="cta_title">Tell me what needs to be built. I’ll turn it into a working product.</h2>
-      <p class="text-muted mx-auto mb-5" style="max-width: 600px;" data-i18n="cta_desc">Websites, platforms, SaaS, AI features, APIs or automation systems — send the idea, the problem and the goal.</p>
+      <h2 class="display-5 fw-bold mx-auto mb-4" style="max-width: 800px; letter-spacing: -0.04em;" data-i18n="cta_title">Tell me what you need to build, integrate or improve.</h2>
+      <p class="text-muted mx-auto mb-5" style="max-width: 600px;" data-i18n="cta_desc">Website, web app, platform, SaaS, AI feature, API integration or automation system — send me the idea and the goal.</p>
       <div class="d-flex justify-content-center flex-wrap gap-3">
-        <a href="mailto:kebirbadie@gmail.com" class="btn btn-green rounded-pill px-4 py-3"><i class="fa-solid fa-envelope me-2"></i><span data-i18n="cta_email">Email me</span></a>
+        <a href="mailto:kebirbadie@gmail.com" class="btn btn-green rounded-pill px-4 py-3"><i class="fa-solid fa-envelope me-2"></i><span data-i18n="cta_email">Let's talk</span></a>
         <a href="https://wa.me/213775792838" target="_blank" rel="noopener" class="btn btn-darkline rounded-pill px-4 py-3"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp</a>
       </div>
       <p class="mt-4 mb-0 text-muted small">kebirbadie@gmail.com</p>
@@ -644,7 +639,6 @@
   </section>
 </main>
 
-<!-- Footer -->
 <footer class="py-4 bg-dark text-secondary">
   <div class="container-xl mx-auto px-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
     <div class="brand text-white">Badye<span style="color:var(--green)">.</span>Dev</div>
@@ -656,154 +650,245 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="translations.js"></script>
 <script>
-  // ===== Project Data (grouped in logical order) =====
+  // ===== Project Data =====
   const projects = [
-    // ---- Static & Business Websites ----
+    // ============ FEATURED (default display order) ============
     {
-      title:"IT-Kane", category:["static"], type:"Business Website", group:"static",
-      desc:"Corporate website focused on clear service presentation, responsive design and straightforward conversion paths.",
-      url:"https://it-kane.netlify.app/",
-      image:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
-      tags:["Responsive","Corporate","UI"]
+      featured: true,
+      title: "DZ-Mouadal",
+      category: ["saas"],
+      group: "saas",
+      type: "SaaS · EdTech",
+      desc: "Free GPA/average calculator for Algerian university students, grown to 479K+ search impressions and 78.3K+ clicks through organic community seeding — now evolving into a freemium product with retake guidance and result-sharing.",
+      url: "https://dz-mouadal.netlify.app/",
+      image: "https://images.unsplash.com/photo-1758270705290-62b6294dd044?q=80&w=1200&auto=format&fit=crop",
+      tags: ["SEO","Organic Growth","Netlify"]
     },
     {
-      title:"O'Saveur Food", category:["static"], type:"Digital Menu", group:"static",
-      desc:"Mobile-first digital restaurant menu designed for QR access and fast browsing on phones.",
-      url:"https://osaveur-13.netlify.app/",
-      image:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
-      tags:["QR","Restaurant","Mobile"]
+      featured: true,
+      title: "InvoiceFlowly",
+      category: ["saas","ai"],
+      group: "saas",
+      type: "SaaS · AI",
+      desc: "End-to-end SaaS product that turns messy client messages into structured invoices with AI, pricing suggestions, authentication, exports and billing.",
+      url: "https://invoiceflowly.com",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop",
+      tags: ["AI","Cloudflare","Lemon Squeezy"]
     },
     {
-      title:"Warska Café", category:["static"], type:"Multilingual Website", group:"static",
-      desc:"Multilingual café website in Arabic, French and English, including RTL support and language switching.",
-      url:"https://warska.netlify.app/",
-      image:"https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop",
-      tags:["AR/FR/EN","RTL","Responsive"]
-    },
-    {
-      title:"Oftaloo Clinic", category:["static"], type:"Medical Website", group:"static",
-      desc:"Clinic website concept focused on clear information, trust signals and appointment conversion.",
-      url:"https://mohamedbadye.github.io/Oftaloo/",
-      image:"https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1200&auto=format&fit=crop",
-      tags:["Healthcare","Leads","UI"]
-    },
-    {
-      title:"PagShop", category:["static"], type:"Landing Page", group:"static",
-      desc:"Conversion-focused product landing page with structured information, trust signals and a clear purchase path.",
-      url:"https://pagshop.netlify.app/",
-      image:"https://images.unsplash.com/photo-1472851294608-415105022052?q=80&w=1200&auto=format&fit=crop",
-      tags:["Landing","Conversion","E-commerce"]
+      featured: true,
+      title: "n8n Lead-Scoring Engine",
+      category: ["automation","ai","api"],
+      group: "automation",
+      type: "n8n Workflow",
+      desc: "n8n workflow that pulls local businesses from the Google Places API, scores and enriches them with Mistral AI, and exports qualified leads ready for outreach — validated with real dentist leads in Tlemcen.",
+      url: "#contact",
+      image: "https://images.unsplash.com/photo-1524666041070-9a48e2a2f6b0?q=80&w=1200&auto=format&fit=crop",
+      tags: ["n8n","Google Places API","Mistral AI"]
     },
 
-    // ---- Platforms & Web Apps ----
+    // ============ STATIC & BUSINESS WEBSITES ============
     {
-      title:"Hirafiyin", category:["platforms","saas"], type:"Platform · SaaS", group:"platforms",
-      desc:"Service marketplace platform with artisan profiles, discovery, filtering and user flows designed around connecting customers with local professionals.",
-      url:"https://hirafiyin.com",
-      image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
-      tags:["Firebase","Cloudinary","Auth"]
+      title: "Medc-Exo 1",
+      category: ["static"],
+      group: "static",
+      type: "Medical Website",
+      desc: "Medical platform presenting structured clinical content through a clean, responsive and easy-to-navigate interface.",
+      url: "https://medc-exo1.netlify.app/",
+      image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Healthcare","Responsive","UI"]
     },
     {
-      title:"EStore — 4SO", category:["platforms"], type:"E-Commerce", group:"platforms",
-      desc:"E-commerce storefront with product catalogue, cart flow and a streamlined responsive shopping experience.",
-      url:"https://estore-4so.pages.dev/",
-      image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop",
-      tags:["E-commerce","Catalog","Cart"]
+      title: "Medc-Exo",
+      category: ["static"],
+      group: "static",
+      type: "Medical Website",
+      desc: "Companion medical platform focused on clear information delivery, structured sections and a mobile-first layout.",
+      url: "https://medc-exo.netlify.app/",
+      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Healthcare","Content","Mobile"]
     },
     {
-      title:"EStore — DM2", category:["platforms"], type:"E-Commerce", group:"platforms",
-      desc:"E-commerce concept with product pages, category filtering and a mobile-first shopping interface.",
-      url:"https://estore-dm2.pages.dev/",
-      image:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1200&auto=format&fit=crop",
-      tags:["Product pages","Filters","Mobile"]
+      title: "Oftaloo Clinic",
+      category: ["static"],
+      group: "static",
+      type: "Medical Website",
+      desc: "Clinic website concept focused on clear information, trust signals and appointment conversion.",
+      url: "https://mohamedbadye.github.io/Oftaloo/",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Healthcare","Leads","UI"]
     },
     {
-      title:"Medcinexo Hospital V5", category:["platforms"], type:"Dashboard", group:"platforms",
-      desc:"Hospital administration dashboard concept for organizing patient information and staff allocation.",
-      url:"https://medcinexo05.netlify.app/",
-      image:"https://images.pexels.com/photos/7579827/pexels-photo-7579827.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      tags:["Dashboard","Data","Healthcare"]
+      title: "Medcinexo Hospital V5",
+      category: ["static"],
+      group: "static",
+      type: "Medical Website",
+      desc: "Hospital website presenting departments, services and doctor information through a structured, professional layout.",
+      url: "https://medcinexo05.netlify.app/",
+      image: "https://images.pexels.com/photos/7579827/pexels-photo-7579827.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      tags: ["Hospital","Doctors","UI"]
     },
     {
-      title:"Medcinexo Pharm V6", category:["platforms"], type:"Pharmacy System", group:"platforms",
-      desc:"Pharmacy management interface covering inventory, expiry dates, stock levels and sales workflows.",
-      url:"https://medcinexo06.netlify.app/",
-      image:"https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1200&auto=format&fit=crop",
-      tags:["Inventory","Expiry","Management"]
+      title: "Medcinexo Pharm V6",
+      category: ["static"],
+      group: "static",
+      type: "Medical Website",
+      desc: "Pharmacy website showcasing services, products and contact details with a clean, trustworthy presentation.",
+      url: "https://medcinexo06.netlify.app/",
+      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Pharmacy","Services","UI"]
     },
     {
-      title:"Medcinexo Clinic V2", category:["platforms"], type:"Booking System", group:"platforms",
-      desc:"Clinic booking concept with scheduling logic and appointment management flows.",
-      url:"https://medcinexo02.netlify.app/",
-      image:"https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop",
-      tags:["Booking","Scheduling","UI"]
+      title: "Medcinexo Clinic V2",
+      category: ["static"],
+      group: "static",
+      type: "Medical Website",
+      desc: "Clinic website concept with doctor profiles, specialty sections and a clear path to booking an appointment.",
+      url: "https://medcinexo02.netlify.app/",
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Clinic","Doctors","Booking"]
     },
     {
-      title:"Algerian BAC Platform", category:["platforms"], type:"Mobile App · React Native", group:"platforms",
-      desc:"React Native/Expo learning platform for Algerian baccalaureate students, with an adaptive scheduling algorithm and gamification — streaks, XP and coins — on a Cloudflare Workers, Hono and D1 backend.",
-      url:"#contact",
-      image:"https://images.unsplash.com/photo-1758270704663-9d002a4b42a2?q=80&w=1200&auto=format&fit=crop",
-      tags:["React Native","Expo","Cloudflare"]
-    },
-
-    // ---- SaaS Products ----
-    {
-      title:"DZ-Mouadal", category:["saas"], type:"SaaS · EdTech", group:"saas",
-      desc:"Free GPA/average calculator for Algerian university students, grown to 150K+ search impressions and 37K+ clicks through organic community seeding — now evolving into a freemium product with retake guidance and result-sharing.",
-      url:"https://dz-mouadal.netlify.app/",
-      image:"https://images.unsplash.com/photo-1758270705290-62b6294dd044?q=80&w=1200&auto=format&fit=crop",
-      tags:["SEO","Organic Growth","Netlify"]
+      title: "IT-Kane",
+      category: ["static"],
+      group: "static",
+      type: "Business Website",
+      desc: "Corporate website focused on clear service presentation, responsive design and straightforward conversion paths.",
+      url: "https://it-kane.netlify.app/",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Responsive","Corporate","UI"]
     },
     {
-      title:"Trader Profit Calculator", category:["saas"], type:"SaaS · In Progress", group:"saas",
-      desc:"Free Arabic-language SEO tool for Algerian resellers and COD merchants, modeled on DZ-Mouadal's organic-growth formula — split into independently indexable calculator pages. Currently in development.",
-      url:"#contact",
-      image:"https://images.unsplash.com/photo-1730789701634-5386e7271462?q=80&w=1200&auto=format&fit=crop",
-      tags:["SEO","Arabic","In Progress"]
-    },
-    {
-      title:"InvoiceFlowly", category:["saas","ai"], type:"SaaS · AI", group:"saas",
-      desc:"End-to-end SaaS product that turns messy client messages into structured invoices with AI, pricing suggestions, authentication, exports and billing.",
-      url:"https://invoiceflowly.com",
-      image:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop",
-      tags:["AI","Cloudflare","Lemon Squeezy"]
-    },
-    {
-      title:"Digital Menu Demo", category:["saas"], type:"SaaS Demo", group:"saas",
-      desc:"Reusable digital-menu SaaS concept demonstrating QR access, restaurant content and a product-style interface.",
-      url:"https://menu-exemple.netlify.app/",
-      image:"https://images.unsplash.com/photo-1568901346375-23c9450c58bc?q=80&w=1200&auto=format&fit=crop",
-      tags:["SaaS","QR","Restaurant"]
-    },
-    {
-      title:"Ecrii Editor", category:["saas"], type:"SaaS Tool", group:"saas",
-      desc:"Minimal writing tool with local persistence and a focused, distraction-free interface.",
-      url:"https://ecrii.netlify.app",
-      image:"https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop",
-      tags:["Tool","Local storage","UX"]
+      title: "PagShop",
+      category: ["static"],
+      group: "static",
+      type: "Landing Page",
+      desc: "Conversion-focused product landing page with structured information, trust signals and a clear purchase path.",
+      url: "https://pagshop.netlify.app/",
+      image: "https://images.unsplash.com/photo-1472851294608-415105022052?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Landing","Conversion","E-commerce"]
     },
 
-    // ---- AI · APIs · Automation ----
+    // ============ E-COMMERCE / STORES ============
     {
-      title:"n8n Lead-Scoring Engine", category:["automation","ai","api"], type:"n8n Workflow", group:"automation",
-      desc:"n8n workflow that pulls local businesses from the Google Places API, scores and enriches them with Mistral AI, and exports qualified leads ready for outreach — validated with real dentist leads in Tlemcen.",
-      url:"#contact",
-      image:"https://images.unsplash.com/photo-1524666041070-9a48e2a2f6b0?q=80&w=1200&auto=format&fit=crop",
-      tags:["n8n","Google Places API","Mistral AI"]
+      title: "E-Store DM1",
+      category: ["stores"],
+      group: "stores",
+      type: "E-Commerce",
+      desc: "E-commerce storefront with product catalogue, cart flow and a streamlined responsive shopping experience.",
+      url: "https://estore-4so.pages.dev/",
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop",
+      tags: ["E-commerce","Catalog","Cart"]
     },
     {
-      title:"DZ News Engine", category:["automation","ai","api"], type:"Content Automation", group:"automation",
-      desc:"Cloudflare Worker that aggregates Algerian RSS sources on a cron schedule, deduplicates with KV, rewrites articles with Mistral AI and stores them in D1 — built for low-competition Arabic-language SEO.",
-      url:"#contact",
-      image:"https://images.unsplash.com/photo-1738190228336-aa4cf73874b7?q=80&w=1200&auto=format&fit=crop",
-      tags:["Cloudflare Workers","D1 & KV","Mistral AI"]
+      title: "E-Store DM2",
+      category: ["stores"],
+      group: "stores",
+      type: "E-Commerce",
+      desc: "E-commerce concept with product pages, category filtering and a mobile-first shopping interface.",
+      url: "https://estore-dm2.pages.dev/",
+      image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Product pages","Filters","Mobile"]
+    },
+
+    // ============ RESTAURANT & CAFÉ MENUS ============
+    {
+      title: "O'Saveur Food",
+      category: ["menu"],
+      group: "menu",
+      type: "Digital Menu · QR",
+      desc: "Mobile-first digital restaurant menu designed for QR access and fast browsing on phones.",
+      url: "https://osaveur-13.netlify.app/",
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
+      tags: ["QR Code","Restaurant","Mobile"]
     },
     {
-      title:"SkyCast Engine", category:["api"], type:"API / Data", group:"automation",
-      desc:"Web application consuming a weather API with asynchronous requests and a responsive data-driven interface.",
-      url:"https://wethar.netlify.app",
-      image:"https://images.unsplash.com/photo-1504608524841-42584120d693?q=80&w=1200&auto=format&fit=crop",
-      tags:["API","Async","Data"]
+      title: "Warska Café",
+      category: ["menu"],
+      group: "menu",
+      type: "Digital Menu · QR",
+      desc: "Multilingual café menu in Arabic, French and English, with RTL support, language switching and QR access.",
+      url: "https://warska.netlify.app/",
+      image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop",
+      tags: ["QR Code","AR/FR/EN","RTL"]
+    },
+
+    // ============ PLATFORMS ============
+    {
+      title: "Hirafiyin",
+      category: ["platforms","saas"],
+      group: "platforms",
+      type: "Platform · Marketplace",
+      desc: "Service marketplace platform with artisan profiles, discovery, filtering and user flows designed around connecting customers with local professionals.",
+      url: "https://hirafiyin.com",
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Firebase","Cloudinary","Auth"]
+    },
+
+    // ============ SAAS PRODUCTS ============
+    {
+      title: "Trader Profit Calculator",
+      category: ["saas"],
+      group: "saas",
+      type: "SaaS · In Progress",
+      desc: "Free Arabic-language SEO tool for Algerian resellers and COD merchants, modeled on DZ-Mouadal's organic-growth formula — split into independently indexable calculator pages. Currently in development.",
+      url: "#contact",
+      image: "https://images.unsplash.com/photo-1730789701634-5386e7271462?q=80&w=1200&auto=format&fit=crop",
+      tags: ["SEO","Arabic","In Progress"]
+    },
+    {
+      title: "Digital Menu Demo",
+      category: ["saas","menu"],
+      group: "saas",
+      type: "SaaS Demo",
+      desc: "Reusable digital-menu SaaS concept demonstrating QR access, restaurant content and a product-style interface.",
+      url: "https://menu-exemple.netlify.app/",
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58bc?q=80&w=1200&auto=format&fit=crop",
+      tags: ["SaaS","QR","Restaurant"]
+    },
+    {
+      title: "Ecrii Editor",
+      category: ["saas"],
+      group: "saas",
+      type: "SaaS Tool",
+      desc: "Minimal writing tool with local persistence and a focused, distraction-free interface.",
+      url: "https://ecrii.netlify.app",
+      image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Tool","Local storage","UX"]
+    },
+
+    // ============ APPLICATIONS ============
+    {
+      title: "Algerian BAC Platform",
+      category: ["apps","platforms"],
+      group: "apps",
+      type: "Mobile App · React Native",
+      desc: "React Native/Expo learning platform for Algerian baccalaureate students, with an adaptive scheduling algorithm and gamification — streaks, XP and coins — on a Cloudflare Workers, Hono and D1 backend.",
+      url: "#contact",
+      image: "https://images.unsplash.com/photo-1758270704663-9d002a4b42a2?q=80&w=1200&auto=format&fit=crop",
+      tags: ["React Native","Expo","Cloudflare"]
+    },
+
+    // ============ AI · APIs · AUTOMATION ============
+    {
+      title: "DZ News Engine",
+      category: ["automation","ai","api"],
+      group: "automation",
+      type: "Content Automation",
+      desc: "Cloudflare Worker that aggregates Algerian RSS sources on a cron schedule, deduplicates with KV, rewrites articles with Mistral AI and stores them in D1 — built for low-competition Arabic-language SEO.",
+      url: "#contact",
+      image: "https://images.unsplash.com/photo-1738190228336-aa4cf73874b7?q=80&w=1200&auto=format&fit=crop",
+      tags: ["Cloudflare Workers","D1 & KV","Mistral AI"]
+    },
+    {
+      title: "SkyCast Engine",
+      category: ["api"],
+      group: "automation",
+      type: "API / Data",
+      desc: "Web application consuming a weather API with asynchronous requests and a responsive data-driven interface.",
+      url: "https://wethar.netlify.app",
+      image: "https://images.unsplash.com/photo-1504608524841-42584120d693?q=80&w=1200&auto=format&fit=crop",
+      tags: ["API","Async","Data"]
     }
   ];
 
@@ -811,12 +896,16 @@
   const filterButtons = document.querySelectorAll(".filter-btn");
 
   const groupMeta = {
-    static:      { title: {en:"Static & Business Websites", fr:"Sites & Pages Vitrines", ar:"المواقع والصفحات الثابتة"} },
-    platforms:   { title: {en:"Platforms & Web Apps",       fr:"Plateformes & Applications Web", ar:"المنصات وتطبيقات الويب"} },
-    saas:        { title: {en:"SaaS Products",              fr:"Produits SaaS", ar:"منتجات SaaS"} },
-    automation:  { title: {en:"AI · APIs · Automation",     fr:"IA · APIs · Automatisation", ar:"الذكاء الاصطناعي · APIs · الأتمتة"} }
+    featured:   { title: {en:"Featured Projects",          fr:"Projets en vedette",              ar:"مشاريع مميزة"} },
+    static:     { title: {en:"Static & Business Websites", fr:"Sites & Pages Vitrines",          ar:"المواقع والصفحات الثابتة"} },
+    stores:     { title: {en:"E-commerce & Stores",        fr:"E-commerce & Boutiques",          ar:"التجارة الإلكترونية والمتاجر"} },
+    menu:       { title: {en:"Restaurant & Café Menus",    fr:"Menus Restaurant & Café",         ar:"قوائم المطاعم والمقاهي"} },
+    platforms:  { title: {en:"Platforms & Web Apps",       fr:"Plateformes & Applications Web",  ar:"المنصات وتطبيقات الويب"} },
+    saas:       { title: {en:"SaaS Products",              fr:"Produits SaaS",                   ar:"منتجات SaaS"} },
+    apps:       { title: {en:"Applications",               fr:"Applications",                    ar:"التطبيقات"} },
+    automation: { title: {en:"AI · APIs · Automation",     fr:"IA · APIs · Automatisation",      ar:"الذكاء الاصطناعي · APIs · الأتمتة"} }
   };
-  const groupOrder = ["static","platforms","saas","automation"];
+  const groupOrder = ["static","stores","menu","platforms","saas","apps","automation"];
 
   function projectCard(p, i){
     return `
@@ -831,7 +920,10 @@
             <h3 class="fs-5 fw-bold mb-2">${p.title}</h3>
             <p class="text-muted small lh-base" style="min-height: 68px;">${p.desc}</p>
             <div class="project-tags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div>
-            <a class="text-dark fw-bold text-decoration-none d-inline-flex align-items-center gap-1" href="${p.url}" target="${p.url.startsWith("#") ? "_self" : "_blank"}" rel="noopener" data-i18n="project_view">View project <i class="fa-solid fa-arrow-up-right-from-square ms-1 fs-6"></i></a>
+            <a class="text-dark fw-bold text-decoration-none d-inline-flex align-items-center gap-1" href="${p.url}" target="${p.url.startsWith("#") ? "_self" : "_blank"}" rel="noopener">
+              <span data-i18n="project_view">View project</span>
+              <i class="fa-solid fa-arrow-up-right-from-square ms-1 fs-6"></i>
+            </a>
           </div>
         </article>
       </div>`;
@@ -840,18 +932,23 @@
   function renderProjects(filter="all"){
     let html = "";
     let counter = 0;
+    const lang = document.documentElement.lang || "en";
 
     if(filter === "all"){
-      // Grouped view with headings
-      const lang = document.documentElement.lang || "en";
+      // 1) Featured section first
+      const featured = projects.filter(p => p.featured);
+      if(featured.length){
+        const label = groupMeta.featured.title[lang] || groupMeta.featured.title.en;
+        html += `<div class="col-12"><h3 class="work-group-title mb-1">${label} <span class="count">${featured.length}</span></h3></div>`;
+        featured.forEach(p => { html += projectCard(p, counter++); });
+      }
+
+      // 2) Other groups (excluding featured items)
       groupOrder.forEach(g => {
-        const items = projects.filter(p => p.group === g);
+        const items = projects.filter(p => p.group === g && !p.featured);
         if(!items.length) return;
-        const label = (groupMeta[g].title[lang] || groupMeta[g].title.en);
-        html += `
-          <div class="col-12">
-            <h3 class="work-group-title mb-1">${label} <span class="count">${items.length}</span></h3>
-          </div>`;
+        const label = groupMeta[g].title[lang] || groupMeta[g].title.en;
+        html += `<div class="col-12"><h3 class="work-group-title mb-1">${label} <span class="count">${items.length}</span></h3></div>`;
         items.forEach(p => { html += projectCard(p, counter++); });
       });
     } else {
@@ -877,12 +974,52 @@
 
   renderProjects("all");
 
-  // ===== FIX: "View my work" scrolls to the work section =====
-  document.getElementById("viewWorkBtn").addEventListener("click", () => {
+  // ===== Hero toggle =====
+  const hireBtn = document.getElementById("hireBtn");
+  const viewWorkBtn = document.getElementById("viewWorkBtn");
+
+  function setHeroToggle(activeBtn){
+    [hireBtn, viewWorkBtn].forEach(b=>{
+      b.classList.remove("active");
+      b.classList.add("inactive");
+    });
+    activeBtn.classList.add("active");
+    activeBtn.classList.remove("inactive");
+  }
+
+  hireBtn.addEventListener("click", () => {
+    setHeroToggle(hireBtn);
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  });
+  viewWorkBtn.addEventListener("click", () => {
+    setHeroToggle(viewWorkBtn);
     document.getElementById("work").scrollIntoView({ behavior: "smooth" });
   });
 
-  // ===== FIX: Mobile menu — custom toggle, stable, no white-flicker =====
+  // ===== How-it-works toggle =====
+  const howToggle = document.getElementById("howToggle");
+  const howCardText = document.getElementById("howCardText");
+
+  howToggle.querySelectorAll("button").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      howToggle.querySelectorAll("button").forEach(b=>{
+        b.classList.remove("active");
+        b.classList.add("inactive");
+        b.style.background = "transparent";
+        b.style.color = "#4b5563";
+      });
+      btn.classList.add("active");
+      btn.classList.remove("inactive");
+      btn.style.background = "#111";
+      btn.style.color = "#fff";
+
+      howCardText.dataset.i18n =
+        btn.dataset.view === "client" ? "how_card_text" : "how_card_text_process";
+      if(window.applyTranslations) window.applyTranslations();
+    });
+  });
+
+  // ===== Mobile menu =====
   const menuBtn = document.getElementById("menuBtn");
   const mobileNav = document.getElementById("mobileNav");
   const menuIcon = document.getElementById("menuIcon");
@@ -910,19 +1047,21 @@
     }
   });
 
-  // ===== Stats counter animation =====
+  // ===== Stats counter (with decimal + suffix support) =====
   const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(!entry.isIntersecting) return;
       const el = entry.target;
-      const target = parseInt(el.dataset.count, 10);
+      const target = parseFloat(el.dataset.count);
+      const decimals = parseInt(el.dataset.decimals || "0", 10);
       const suffix = el.dataset.suffix || (target > 10 ? "+" : "");
       const duration = 1100;
       const start = performance.now();
+
       function tick(now){
         const t = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(target * eased) + (t === 1 ? suffix : "");
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
         if(t < 1) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
@@ -932,10 +1071,9 @@
 
   document.querySelectorAll(".stat-box .num").forEach(el => statsObserver.observe(el));
 
-  // Language Switcher
+  // ===== Language Switcher =====
   function setLanguage(lang){
     if(window.setPortfolioLanguage) window.setPortfolioLanguage(lang);
-    // refresh grouped headings if "all" filter is active
     const active = document.querySelector(".filter-btn.active");
     if(active && active.dataset.filter === "all") renderProjects("all");
   }

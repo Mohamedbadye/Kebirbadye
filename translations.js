@@ -47,6 +47,7 @@ const portfolioTranslations = {
     how_toggle_work: "My process",
 
     how_card_text: "One developer, every layer of your product",
+    how_card_text_process: "A clear path from first brief to launch",
 
     work_label: "Selected work",
 
@@ -58,8 +59,11 @@ const portfolioTranslations = {
 
     filter_all: "All",
     filter_static: "Websites",
+    filter_stores: "Stores",
+    filter_menu: "Menus",
     filter_platforms: "Platforms",
     filter_saas: "SaaS",
+    filter_apps: "Apps",
     filter_automation: "Automation",
     filter_ai: "AI",
     filter_api: "APIs",
@@ -87,6 +91,14 @@ const portfolioTranslations = {
     featured2_stat2_lbl: "Search impressions",
     featured2_highlight: "Grown organically through Algerian student communities — zero ad spend",
 
+    badge_organic: "Organic Growth",
+    badge_freemium: "Freemium",
+    badge_edtech: "EdTech",
+
+    invoice_client: "Client",
+    invoice_total: "Total",
+    invoice_ai_note: "AI extracted invoice data + suggested pricing",
+
     about_label: "About",
 
     about_title:
@@ -97,6 +109,9 @@ const portfolioTranslations = {
 
     about_desc2:
       "My main focus is Jamstack and serverless architecture — micro-SaaS products, AI integration and automation — with a practical, bootstrapped approach to shipping and keeping the architecture simple where possible.",
+
+    about_langs:
+      "<strong>Languages:</strong> Arabic (native), French (fluent), English (professional). I build multilingual and RTL-ready products, and I work comfortably with international clients.",
 
     stack_label: "Stack & tools",
 
@@ -165,6 +180,7 @@ const portfolioTranslations = {
     how_toggle_work: "Mon processus",
 
     how_card_text: "Un seul développeur pour toutes les couches de votre produit",
+    how_card_text_process: "Un chemin clair du premier brief au lancement",
 
     work_label: "Réalisations sélectionnées",
 
@@ -176,8 +192,11 @@ const portfolioTranslations = {
 
     filter_all: "Tout",
     filter_static: "Sites Web",
+    filter_stores: "Boutiques",
+    filter_menu: "Menus",
     filter_platforms: "Plateformes",
     filter_saas: "SaaS",
+    filter_apps: "Applications",
     filter_automation: "Automatisation",
     filter_ai: "IA",
     filter_api: "APIs",
@@ -205,6 +224,14 @@ const portfolioTranslations = {
     featured2_stat2_lbl: "Impressions de recherche",
     featured2_highlight: "Croissance organique via les communautés étudiantes algériennes — sans budget pub",
 
+    badge_organic: "Croissance organique",
+    badge_freemium: "Freemium",
+    badge_edtech: "EdTech",
+
+    invoice_client: "Client",
+    invoice_total: "Total",
+    invoice_ai_note: "Données extraites par IA + tarification suggérée",
+
     about_label: "À propos",
 
     about_title:
@@ -215,6 +242,9 @@ const portfolioTranslations = {
 
     about_desc2:
       "Mon axe principal est l'architecture Jamstack et serverless — micro-SaaS, intégration IA et automatisation — avec une approche pratique et bootstrappée, en gardant l'architecture simple autant que possible.",
+
+    about_langs:
+      "<strong>Langues :</strong> Arabe (natif), Français (courant), Anglais (professionnel). Je construis des produits multilingues et compatibles RTL, et je travaille confortablement avec des clients internationaux.",
 
     stack_label: "Stack & outils",
 
@@ -283,6 +313,7 @@ const portfolioTranslations = {
     how_toggle_work: "طريقة عملي",
 
     how_card_text: "مطور واحد لكل طبقات منتجك",
+    how_card_text_process: "مسار واضح من الموجز الأول إلى الإطلاق",
 
     work_label: "أعمال مختارة",
 
@@ -294,8 +325,11 @@ const portfolioTranslations = {
 
     filter_all: "الكل",
     filter_static: "مواقع",
+    filter_stores: "متاجر",
+    filter_menu: "قوائم",
     filter_platforms: "منصات",
     filter_saas: "SaaS",
+    filter_apps: "تطبيقات",
     filter_automation: "أتمتة",
     filter_ai: "ذكاء اصطناعي",
     filter_api: "APIs",
@@ -323,6 +357,14 @@ const portfolioTranslations = {
     featured2_stat2_lbl: "ظهور في نتائج البحث",
     featured2_highlight: "نمو عضوي عبر المجتمعات الطلابية الجزائرية — بدون إنفاق إعلاني",
 
+    badge_organic: "نمو عضوي",
+    badge_freemium: "Freemium",
+    badge_edtech: "تقنية تعليمية",
+
+    invoice_client: "العميل",
+    invoice_total: "الإجمالي",
+    invoice_ai_note: "استخراج البيانات بالذكاء الاصطناعي + اقتراح الأسعار",
+
     about_label: "من أنا",
 
     about_title:
@@ -333,6 +375,9 @@ const portfolioTranslations = {
 
     about_desc2:
       "أركز أساسًا على بنية Jamstack وServerless — منتجات Micro-SaaS، دمج الذكاء الاصطناعي والأتمتة — بأسلوب عملي وBootstrapped، مع الحفاظ على بساطة البنية التقنية قدر الإمكان.",
+
+    about_langs:
+      "<strong>اللغات:</strong> العربية (لغة أم)، الفرنسية (بطلاقة)، الإنجليزية (احترافية). أبني منتجات متعددة اللغات وجاهزة لـ RTL، وأعمل بسهولة مع عملاء دوليين.",
 
     stack_label: "التقنيات والأدوات",
 
@@ -357,39 +402,31 @@ const portfolioTranslations = {
 
 function applyTranslations() {
   const lang = document.documentElement.lang || "en";
-  const dict =
-    portfolioTranslations[lang] || portfolioTranslations.en;
+  const dict = portfolioTranslations[lang] || portfolioTranslations.en;
 
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
+    if (dict[key] === undefined) return;
 
-    if (dict[key] !== undefined) {
-      if (el.tagName === "INPUT" && el.placeholder !== undefined) {
-        el.placeholder = dict[key];
-      } else {
-        el.innerHTML = dict[key];
-      }
+    if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+      el.placeholder = dict[key];
+    } else {
+      el.innerHTML = dict[key];
     }
   });
 }
 
 function setPortfolioLanguage(lang) {
-  if (!portfolioTranslations[lang]) {
-    lang = "en";
-  }
+  if (!portfolioTranslations[lang]) lang = "en";
 
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
   localStorage.setItem("badye-lang", lang);
 
-  const selects = document.querySelectorAll(
-    "#langSelect,#langSelectMobile"
-  );
-
-  selects.forEach((s) => {
-    s.value = lang;
-  });
+  document
+    .querySelectorAll("#langSelect,#langSelectMobile")
+    .forEach((s) => { s.value = lang; });
 
   applyTranslations();
 }
